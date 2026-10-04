@@ -26,27 +26,38 @@ jobs:
         env:
           PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
           SFTP_CREDS: ${{ secrets.SFTP_CREDS }}
-          MCP_URL: ${{ secrets.MCP_URL }}
-          MCP_TOKEN: ${{ secrets.MCP_TOKEN }}
+          MCP_URL: ${{ secrets.MCP_URL || 'https://mcp.ouipanel.com/mcp' }}
           INPUT_MODE: ${{ github.event.inputs.mode }}
           INPUT_OPNAME: ${{ github.event.inputs.opname }}
         run: |
           MODE="${INPUT_MODE:-$(cat deploy/mode.txt 2>/dev/null || echo auto)}"
           OPS_NAME="${INPUT_OPNAME:-$(cat deploy/opname.txt 2>/dev/null || true)}"
-          if [ -n "$MCP_URL" ]; then
-            MODE="$MODE" OPS_NAME="$OPS_NAME" python3 deploy/mcp_client.py "$MODE"
-          elif [ -n "$SFTP_CREDS" ]; then
-            pip install -q paramiko
-            OPS_NAME="$OPS_NAME" python3 deploy/sftp.py "$MODE"
-          else
-            OPS_NAME="$OPS_NAME" bash deploy/panel.sh "$MODE"
-          fi
+          case "$MODE" in
+            mcp-begin|mcp-finish)
+              python3 deploy/oauth.py "$MODE"
+              ;;
+            *)
+              TOK=""
+              if [ -f deploy/mcp-tokens.enc ]; then
+                TOK=$(python3 deploy/oauth.py token) || TOK=""
+              fi
+              if [ -n "$TOK" ]; then
+                OPS_NAME="$OPS_NAME" MCP_TOKEN="$TOK" python3 deploy/mcp_client.py "$MODE"
+              elif [ -n "$SFTP_CREDS" ]; then
+                pip install -q paramiko
+                OPS_NAME="$OPS_NAME" python3 deploy/sftp.py "$MODE"
+              else
+                OPS_NAME="$OPS_NAME" bash deploy/panel.sh "$MODE"
+              fi
+              ;;
+          esac
 
       - name: Publică raportul
         if: always()
         run: |
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
-          git add deploy-report/ || true
+          git add -A deploy/ deploy-report/ || true
           git commit -m "deploy: raport panel [skip ci]" || echo "nimic nou de comis"
+          git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null || true
           git push || echo "push eșuat"
