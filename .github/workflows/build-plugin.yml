@@ -43,20 +43,43 @@ jobs:
 
       - name: Test pe server Paper 1.21.4 real
         run: |
-          set -e
-          BUILD=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds | jq -r '.builds[-1].build')
-          NAME=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD | jq -r '.downloads.application.name')
-          echo "Paper 1.21.4 build $BUILD ($NAME)"
-          curl -s -o paper.jar "https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD/downloads/$NAME"
-          mkdir -p server/plugins
-          mv paper.jar server/paper.jar
-          cd server
-          echo "eula=true" > eula.txt
-          printf "online-mode=false\nlevel-type=minecraft\\:flat\nview-distance=4\nspawn-monsters=false\n" > server.properties
-          cp ../plugin/target/OffroaderPlugin.jar plugins/
-          timeout 150 java -Xmx2G -jar paper.jar nogui > run.log 2>&1 || true
-          tail -30 run.log
-          grep -q "OffroaderPlugin activ" run.log && echo "=== SMOKE TEST OK: pluginul s-a încărcat pe server real ===" || { echo "=== SMOKE TEST FAILED ==="; exit 1; }
+          set -o pipefail
+          {
+            set -x
+            URL=$(curl -sfL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest" | jq -r '.downloads["server:default"].url')
+            if [ -z "$URL" ] || [ "$URL" = "null" ]; then
+              echo "fill v3 indisponibil, încerc v2..."
+              BUILD=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds | jq -r '.builds[-1].build')
+              NAME=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD | jq -r '.downloads.application.name')
+              URL="https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD/downloads/$NAME"
+            fi
+            echo "Descarc Paper de la: $URL"
+            curl -sfL -o paper.jar "$URL"
+            ls -la paper.jar
+            mkdir -p server/plugins
+            mv paper.jar server/paper.jar
+            cd server
+            echo "eula=true" > eula.txt
+            printf "online-mode=false\nlevel-type=minecraft\\:flat\nview-distance=4\nspawn-monsters=false\n" > server.properties
+            cp ../plugin/target/OffroaderPlugin.jar plugins/
+            timeout 150 java -Xmx2G -jar paper.jar nogui > run.log 2>&1 || true
+            tail -40 run.log
+          } 2>&1 | tee smoke-diag.txt
+          grep -q "OffroaderPlugin activ" server/run.log && echo "=== SMOKE TEST OK: pluginul s-a încărcat pe server real ===" || { echo "=== SMOKE TEST FAILED ==="; exit 1; }
+
+      - name: Publică erorile în repo (la eșec)
+        if: failure()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          mkdir -p plugin/release
+          { [ -f plugin/build-output.txt ] && cp plugin/build-output.txt plugin/release/build-errors.txt
+            [ -f smoke-diag.txt ] && cp smoke-diag.txt plugin/release/smoke-diag.txt
+            if [ -f server/run.log ]; then tail -100 server/run.log > plugin/release/server-test.log; else echo "server/run.log lipsește" > plugin/release/server-test.log; fi
+          } || true
+          git add plugin/release/
+          git commit -m "build: log-uri diagnostic CI [skip ci]" || echo "nimic de comis"
+          git push || echo "push eșuat"
 
       - name: Commit jar în repo
         run: |
