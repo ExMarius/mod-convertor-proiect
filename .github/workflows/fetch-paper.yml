@@ -14,17 +14,36 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Descarcă Paper 1.21.4 și comite-l în repo
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Pornește Paper o dată și comite artefactele de boot
         run: |
           set -e
           URL=$(curl -sfL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest" | jq -r '.downloads["server:default"].url')
           echo "Paper: $URL"
-          mkdir -p server
-          curl -sfL -o server/paper-1.21.4.jar "$URL"
-          ls -la server/paper-1.21.4.jar
+          mkdir -p /tmp/mc && cd /tmp/mc
+          curl -sfL -o paper.jar "$URL"
+          echo "eula=true" > eula.txt
+          printf "level-type=minecraft\\:flat\nview-distance=4\nonline-mode=false\n" > server.properties
+          timeout 200 java -Xmx2G -jar paper.jar nogui > boot.log 2>&1 || true
+          echo "=== jar-uri după boot ==="
+          find . -name "*.jar" -exec ls -la {} \; || true
+          echo "=== finalul boot.log ==="
+          tail -5 boot.log || true
+          cd - >/dev/null
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
-          git add -f server/paper-1.21.4.jar
-          git commit -m "server: paper-1.21.4.jar [skip ci]" || echo "deja prezent"
+          rm -rf server/boot
+          mkdir -p server/boot
+          cp -r /tmp/mc/cache server/boot/cache 2>/dev/null || true
+          cp -r /tmp/mc/versions server/boot/versions 2>/dev/null || true
+          cp /tmp/mc/paper.jar server/boot/paperclip.jar 2>/dev/null || true
+          echo "### conținut server/boot:" && find server/boot -type f -exec ls -la {} \;
+          find server/boot -type f -size +99M -print -delete || true
+          git add -f server/boot
+          git commit -m "server: artefacte boot paper 1.21.4 [skip ci]" || echo "nimic nou"
           git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null || true
           git push
