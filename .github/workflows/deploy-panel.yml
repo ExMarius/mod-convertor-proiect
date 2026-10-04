@@ -3,7 +3,7 @@ name: deploy-panel
 on:
   push:
     branches: ['arena/**']
-    paths: ['deploy/**', '.github/workflows/deploy-panel.yml']
+    paths: ['deploy/panel.sh', 'deploy/sftp.py', 'deploy/mcp_client.py', 'deploy/oauth.py', 'deploy/mode.txt', 'deploy/opname.txt', '.github/workflows/deploy-panel.yml']
   workflow_dispatch:
     inputs:
       mode:

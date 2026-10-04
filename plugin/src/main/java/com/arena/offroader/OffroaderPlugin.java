@@ -1,9 +1,14 @@
 package com.arena.offroader;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
@@ -23,7 +28,7 @@ import java.util.UUID;
  * singura autoritate este pluginul (fără luptă client/server).
  * Modelul, sunetele, HUD-ul și combustibilul rămân în datapack (cooperare).
  */
-public final class OffroaderPlugin extends JavaPlugin {
+public final class OffroaderPlugin extends JavaPlugin implements Listener {
 
     /** viteză pe tick, pe vehicul (bloc/tick) */
     private final Map<UUID, Double> speed = new HashMap<>();
@@ -41,7 +46,38 @@ public final class OffroaderPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         getLogger().info("OffroaderPlugin activ — condus ca în mod (W/A/S/D, camera liberă).");
+        Bukkit.getPluginManager().registerEvents(this, this);
         Bukkit.getScheduler().runTaskTimer(this, this::tick, 1L, 1L);
+    }
+
+    /** kit-ul (cheie + volan + bidon) se dă automat la prima conectare — fără op */
+    private void giveKit(Player p) {
+        boolean ok = Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                "execute as " + p.getName() + " at @s run function offroader:give");
+        if (ok) {
+            p.addScoreboardTag("offr_kit");
+            getLogger().info("kit offroader dat lui " + p.getName());
+        } else {
+            getLogger().warning("nu am putut da kitul lui " + p.getName() + " — datapack-ul offroader e încărcat?");
+            p.sendMessage("§e[Offroader] §cDatapack-ul nu e încărcat — cere-i adminului /reload.");
+        }
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        if (e.getPlayer().getScoreboardTags().contains("offr_kit")) return;
+        // 1 tick de întârziere: jucătorul să fie complet în lume când primește items
+        Bukkit.getScheduler().runTaskLater(this, () -> giveKit(e.getPlayer()), 20L);
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player p) {
+            giveKit(p);
+            p.sendMessage("§e[Offroader] §aAi primit cheia, volanul și bidonul (dacă le-ai pierdut).");
+            return true;
+        }
+        return false;
     }
 
     private void tick() {
