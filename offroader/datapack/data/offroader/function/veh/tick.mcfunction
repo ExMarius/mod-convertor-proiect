@@ -27,11 +27,12 @@ execute if score @s offr.speed2 matches 400.. run scoreboard players add @s offr
 execute if score @s offr.speed2 matches 2500.. run scoreboard players add @s offr.wheel 2
 execute if score @s offr.wheel matches 24.. run scoreboard players remove @s offr.wheel 24
 
-# are șofer? (pasager direct al calului = șoferul)
-scoreboard players set #driven offr.tmp 0
-execute if entity @s[nbt={Passengers:[{}]}] run scoreboard players set #driven offr.tmp 1
-execute if score #driven offr.tmp matches 1 run function offroader:veh/driving
-execute if score #driven offr.tmp matches 0 run function offroader:veh/parked
+# are șofer? numărăm pasagerii calului (execute on passengers — mai
+# robust decât potrivirea NBT Passengers)
+scoreboard players set #np offr.tmp 0
+execute on passengers run scoreboard players add #np offr.tmp 1
+execute if score #np offr.tmp matches 1.. run function offroader:veh/driving
+execute if score #np offr.tmp matches 0 run function offroader:veh/parked
 
 # caroseria, roțile, scaunele și click-urile — mereu
 function offroader:veh/follow

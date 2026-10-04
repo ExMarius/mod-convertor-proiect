@@ -90,6 +90,10 @@ def validate_mcfunctions():
                     err(f"{name}:{i} paranteze drepte dezechilibrate: {line[:90]}")
                 if line.count('"') % 2:
                     err(f"{name}:{i} ghilimele impare: {line[:90]}")
+                if "!=" in line.replace("!=", "! =") and "!=" in line:
+                    err(f"{name}:{i} operator «!=» inexistent (folosește unless ... = ...): {line[:90]}")
+                if re.search(r"\bdata (merge|modify) entity @e\[(?!.*limit=1)", line):
+                    err(f"{name}:{i} data entity cu selector multiplu (cere o singură entitate): {line[:90]}")
                 body = line
                 if body.startswith("$"):
                     if "$(" not in body:

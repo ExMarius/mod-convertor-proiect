@@ -141,16 +141,16 @@ def main():
             F.append("execute if score #y2 offr.tmp matches ..-1 run scoreboard players add #y2 offr.tmp 36")
             F.append("execute if score #y2 offr.tmp matches 36.. run scoreboard players remove #y2 offr.tmp 36")
             F.append("execute store result storage offroader:call y int 1 run scoreboard players get #y2 offr.tmp")
-            F.append(f"execute at @s as @e[tag={tag},distance=..6] "
+            F.append(f"execute at @s as @e[tag={tag},distance=..64] "
                      f"if score @s offr.id = #cur offr.tmp run function offroader:veh/fl_{tag}")
             F.append("execute store result storage offroader:call y int 1 run scoreboard players get #yaw offr.tmp")
         else:
-            F.append(f"execute at @s as @e[tag={tag},distance=..6] "
+            F.append(f"execute at @s as @e[tag={tag},distance=..64] "
                      f"if score @s offr.id = #cur offr.tmp run function offroader:veh/fl_{tag}")
     F += [
         "# 3) verifică click-urile pe scaune (interaction entities)",
-        "execute at @s as @e[tag=offr_i_driver,distance=..6] if score @s offr.id = #cur offr.tmp run function offroader:veh/check_driver_i",
-        "execute at @s as @e[tag=offr_i_seat,distance=..6] if score @s offr.id = #cur offr.tmp run function offroader:veh/check_seat_i",
+        "execute at @s as @e[tag=offr_i_driver,distance=..64] if score @s offr.id = #cur offr.tmp run function offroader:veh/check_driver_i",
+        "execute at @s as @e[tag=offr_i_seat,distance=..64] if score @s offr.id = #cur offr.tmp run function offroader:veh/check_seat_i",
     ]
     with open(os.path.join(FUNC, "follow.mcfunction"), "w") as f:
         f.write("\n".join(F) + "\n")

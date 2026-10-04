@@ -26,7 +26,7 @@ execute if score @s offr.fuel matches 1.. run scoreboard players set @s offr.mod
 execute if score @s offr.fuel matches ..0 run scoreboard players set @s offr.mode 0
 execute if score @s offr.boost matches 1.. if score @s offr.fuel matches 1.. run scoreboard players set @s offr.mode 2
 execute if score @s offr.boost matches 1.. run scoreboard players remove @s offr.boost 1
-execute if score @s offr.mode != @s offr.applied run function offroader:veh/apply_mode
+execute unless score @s offr.mode = @s offr.applied run function offroader:veh/apply_mode
 
 # sunet de motor + HUD o dată pe secundă
 execute if score @s offr.ticks matches 0 if score @s offr.fuel matches 1.. run function offroader:veh/engine

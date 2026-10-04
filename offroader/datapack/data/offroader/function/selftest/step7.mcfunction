@@ -10,6 +10,14 @@ execute store result score #ok offr.tmp if score #sp offr.tmp matches ..100
 data modify storage offroader:st msg set value "viteza zero in parcare"
 function offroader:selftest/check with storage offroader:st
 
+# depozitare (înainte de iteme — independent de ele)
+execute as @e[type=minecraft:horse,tag=offr_veh,distance=..5,limit=1,sort=nearest] at @s run function offroader:veh/store
+execute unless entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 1
+execute if entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 0
+data modify storage offroader:st msg set value "masina s-a depozitat (cal + piese eliminate)"
+function offroader:selftest/check with storage offroader:st
+execute if entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run tellraw @a[tag=offr_tester] {"text":"  [INFO] depozitarea blocata: calul inca exista (ocupat?)","color":"gold"}
+
 # scoatem itemele offroader din teste anterioare (inventarul poate fi plin)
 clear @s minecraft:warped_fungus_on_a_stick[item_model="offroader:key"]
 clear @s minecraft:carrot_on_a_stick[item_model="offroader:steering_wheel"]
@@ -28,12 +36,6 @@ function offroader:selftest/check with storage offroader:st
 
 execute store result score #ok offr.tmp if items entity @s contents minecraft:fishing_rod[item_model="offroader:jerrycan"]
 data modify storage offroader:st msg set value "bidonul primit si recunoscut"
-function offroader:selftest/check with storage offroader:st
-
-execute as @e[type=minecraft:horse,tag=offr_veh,distance=..5,limit=1,sort=nearest] at @s run function offroader:veh/store
-execute unless entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 1
-execute if entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 0
-data modify storage offroader:st msg set value "masina s-a depozitat (cal + piese eliminate)"
 function offroader:selftest/check with storage offroader:st
 
 data modify storage offroader:st p set value "step8"
