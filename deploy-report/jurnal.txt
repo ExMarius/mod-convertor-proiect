@@ -1,1 +1,0 @@
-SECRET LIPSESTE: adaugă PTERO_TOKEN în repo → Settings → Secrets and variables → Actions → New repository secret.
