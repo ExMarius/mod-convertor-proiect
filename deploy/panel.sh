@@ -23,7 +23,9 @@ if [ "$MODE" = "auto" ] && [ -f "$REP/DONE.txt" ]; then
   exit 0
 fi
 
-auth=(-H "Authorization: Bearer $PTERO_TOKEN" -H "Accept: application/json")
+auth=(-H "Authorization: Bearer $PTERO_TOKEN" -H "Accept: application/json"
+      -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+      -H "Accept-Language: en-US,en;q=0.9" -H "Accept-Encoding: identity")
 
 jget() { # jget <cale-api> <fișier-ieșire>  → tipărește codul HTTP
   curl -sS -m 60 -o "$2" -w '%{http_code}' "${auth[@]}" "$BASE$1"
@@ -131,8 +133,8 @@ mk "datapacks" "/world"
 fwrite() { # fwrite <cale-panel> <fișier-local> → cod HTTP
   local p f code
   p="$(enc "$1")"; f="$2"
-  curl -sS -m 180 -o /dev/null -w '%{http_code}' -X POST \
-    -H "Authorization: Bearer $PTERO_TOKEN" -H "Content-Type: application/octet-stream" \
+  curl -sS -m 180 -o /dev/null -w '%{http_code}' -X POST "${auth[@]}" \
+    -H "Content-Type: application/octet-stream" \
     --data-binary "@$f" "$SRV/$ID/files/write?file=$p"
 }
 fbig() { # fbig <dir-panel> <fișier-local> → cod HTTP (endpoint upload semnat)
@@ -180,7 +182,7 @@ fi
 
 # --- 2f. server.properties (backup + patch) ---
 PROP=/tmp/server.properties
-code=$(curl -sS -m 60 -o "$PROP" -w '%{http_code}' -H "Authorization: Bearer $PTERO_TOKEN" \
+code=$(curl -sS -m 60 -o "$PROP" -w '%{http_code}' "${auth[@]}" \
   "$SRV/$ID/files/content?file=%2Fserver.properties")
 if ok2xx "$code"; then
   log "server.properties existent — backup ca server.properties.arena-bak"
@@ -222,7 +224,7 @@ fi
 
 # --- 2h. restart + verificare din loguri ---
 check_log() {
-  curl -sS -m 60 -H "Authorization: Bearer $PTERO_TOKEN" -o /tmp/latest.log \
+  curl -sS -m 60 "${auth[@]}" -o /tmp/latest.log \
     "$SRV/$ID/files/content?file=%2Flogs%2Flatest.log" 2>/dev/null
   grep -q "OffroaderPlugin activ" /tmp/latest.log 2>/dev/null
 }
