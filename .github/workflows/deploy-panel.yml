@@ -25,12 +25,18 @@ jobs:
       - name: Rulează deploy pe panel
         env:
           PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
+          SFTP_CREDS: ${{ secrets.SFTP_CREDS }}
           INPUT_MODE: ${{ github.event.inputs.mode }}
           INPUT_OPNAME: ${{ github.event.inputs.opname }}
         run: |
           MODE="${INPUT_MODE:-$(cat deploy/mode.txt 2>/dev/null || echo auto)}"
           OPS_NAME="${INPUT_OPNAME:-$(cat deploy/opname.txt 2>/dev/null || true)}"
-          OPS_NAME="$OPS_NAME" bash deploy/panel.sh "$MODE"
+          if [ -n "$SFTP_CREDS" ]; then
+            pip install -q paramiko
+            OPS_NAME="$OPS_NAME" python3 deploy/sftp.py "$MODE"
+          else
+            OPS_NAME="$OPS_NAME" bash deploy/panel.sh "$MODE"
+          fi
 
       - name: Publică raportul
         if: always()

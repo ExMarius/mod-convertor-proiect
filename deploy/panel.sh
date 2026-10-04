@@ -41,10 +41,21 @@ enc() { python3 -c 'import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]
 log ""
 log "=== $(date -u +%H:%M:%S) DISCOVERY (mod $MODE) ==="
 
-code=$(jget /api/client "$REP/servers.json")
+code=000
+for i in 1 2 3; do
+  code=$(jget /api/client "$REP/servers.json")
+  ok2xx "$code" && break
+  grep -q "challenges.cloudflare.com" "$REP/servers.json" 2>/dev/null || break
+  log "Cloudflare challenge (încercarea $i) — mai încearcă peste 15s..."
+  sleep 15
+done
 log "GET /api/client → $code"
 if ! ok2xx "$code"; then
   log "EROARE: nu pot lista serverele (cod $code)."
+  if grep -q "challenges.cloudflare.com\|Just a moment" "$REP/servers.json" 2>/dev/null; then
+    log "CAUZA: panelul e în spatele Cloudflare cu provocare JS — API-ul HTTP nu e accesibil automat."
+    log "SOLUȚIE: SFTP (panel → Settings → SFTP): host, port, username, parolă."
+  fi
   head -c 500 "$REP/servers.json" >> "$REP/jurnal.txt" 2>/dev/null
   exit 1
 fi
