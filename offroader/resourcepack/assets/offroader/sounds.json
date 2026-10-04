@@ -40,5 +40,12 @@
         "name": "offroader:slosh"
       }
     ]
+  },
+  "destroyed": {
+    "sounds": [
+      {
+        "name": "offroader:destroyed"
+      }
+    ]
   }
 }

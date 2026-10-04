@@ -74,6 +74,26 @@ def copy_texture(ref):
     print("textură:", os.path.relpath(dst, ROOT))
 
 
+def fix_engine_loop():
+    """Decupează engine.ogg la exact 1.000 s, cu crossfade cap-coadă.
+    Astfel, replay-ul din 20 în 20 de tick-uri e o buclă continuă, fără
+    suprapunere și fără pauze (fostul „tit-tit-tit")."""
+    import numpy as np
+    import soundfile as sf
+    p = os.path.join(RP, "sounds", "engine.ogg")
+    d, sr = sf.read(p)
+    n = int(1.0 * sr)
+    if len(d) > n:
+        d = d[:n]
+    else:
+        d = np.pad(d, (0, n - len(d)))
+    xf = int(0.04 * sr)
+    w = np.linspace(0, 1, xf)
+    d[:xf] = d[:xf] * w + d[-xf:] * (1 - w)
+    sf.write(p, d.astype(np.float32), sr, format="OGG", subtype="VORBIS")
+    print("engine.ogg: buclă fixă de 1.000 s (replay continuu)")
+
+
 def copy_sound(src_rel, name):
     src = os.path.join(SRC, src_rel)
     dst = os.path.join(RP, "sounds", name + ".ogg")
@@ -143,8 +163,10 @@ def main():
 
     # sunetele de la offroader: motor de jet_ski, claxonul vehiculului, glug
     copy_sound("sounds/entity/jet_ski/engine.ogg", "engine")
+    fix_engine_loop()
     copy_sound("sounds/entity/vehicle/horn.ogg", "horn")
     copy_sound("sounds/item/jerry_can/liquid_glug.ogg", "slosh")
+    copy_sound("sounds/entity/vehicle/destroyed.ogg", "destroyed")
     print("Conversie completă.")
 
 
