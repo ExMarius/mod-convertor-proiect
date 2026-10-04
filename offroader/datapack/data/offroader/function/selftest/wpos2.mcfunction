@@ -9,6 +9,6 @@ scoreboard players operation #dz offr.tmp -= #hz offr.tmp
 scoreboard players operation #dz offr.tmp *= #dz offr.tmp
 scoreboard players operation #dx offr.tmp += #dz offr.tmp
 execute store result storage offroader:st d int 1 run scoreboard players get #dx offr.tmp
-execute store result score #ok offr.tmp if score #dx offr.tmp matches 150..320
-$data modify storage offroader:st msg set value "roata fata-stanga: dist²=$(d) cm² (corect: 150..320)"
+execute store result score #ok offr.tmp if score #dx offr.tmp matches 38000..43000
+$data modify storage offroader:st msg set value "roata fata-stanga: dist²=$(d) cm² (corect: 38000..43000)"
 function offroader:selftest/check with storage offroader:st
