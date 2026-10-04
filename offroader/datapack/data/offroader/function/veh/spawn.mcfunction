@@ -1,6 +1,6 @@
 # Scoate un offroader nou — rulează ca jucătorul, la poziția/rotția lui.
 # Calul invizibil = „motorul" (WASD = mers, spațiu = săritură off-road).
-summon minecraft:horse ^ ^ ^1.6 {Tags:["offr_veh","offr_new"],Tame:1b,Silent:1b,Invulnerable:1b,Invisible:1b,Persistent:1b,NoAI:1b,SaddleItem:{id:"minecraft:saddle",count:1},CustomName:{text:"Offroader"},attributes:[{id:"minecraft:movement_speed",base:0.3375},{id:"minecraft:jump_strength",base:0.85},{id:"minecraft:max_health",base:30}],Health:30f}
+summon minecraft:horse ^ ^ ^1.6 {Tags:["offr_veh","offr_new"],Tame:1b,Silent:1b,Invulnerable:1b,PersistenceRequired:1b,NoAI:1b,active_effects:[{id:"minecraft:invisibility",amplifier:0b,duration:-1,show_particles:0b,show_icon:0b}],SaddleItem:{id:"minecraft:saddle",count:1},CustomName:{text:"Offroader"},attributes:[{id:"minecraft:movement_speed",base:0.3375},{id:"minecraft:jump_strength",base:0.85},{id:"minecraft:max_health",base:30}],Health:30f}
 
 # orientat exact ca jucătorul (2 zecimale)
 execute store result entity @e[tag=offr_new,limit=1] Rotation[0] float 0.01 run data get entity @s Rotation[0] 100

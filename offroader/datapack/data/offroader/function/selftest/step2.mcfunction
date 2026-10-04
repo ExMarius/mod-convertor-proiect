@@ -9,6 +9,10 @@ execute store result score #ok offr.tmp run data get entity @e[tag=offr_body,lim
 data modify storage offroader:st msg set value "caroseria foloseste modelul custom (item_model offroader:body)"
 function offroader:selftest/check with storage offroader:st
 
+execute store result score #ok offr.tmp if entity @e[type=minecraft:horse,tag=offr_veh,limit=1,nbt={active_effects:[{id:"minecraft:invisibility"}]}]
+data modify storage offroader:st msg set value "calul (motorul) e invizibil prin efect"
+function offroader:selftest/check with storage offroader:st
+
 execute store result score #ok offr.tmp run data get entity @e[tag=offr_name,limit=1] text
 data modify storage offroader:st msg set value "numele masinii exista (text_display)"
 function offroader:selftest/check with storage offroader:st

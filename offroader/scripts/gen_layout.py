@@ -53,7 +53,7 @@ def summon_line(tag, kind, model, pos, extra):
         tags_str = ",".join(f'"{t}"' for t in tags)
         return (f'summon minecraft:armor_stand ~ ~ ~ {{Tags:[{tags_str}],'
                 f'Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,'
-                f'Persistent:1b}}')
+                f'PersistenceRequired:1b}}')
     if kind == "interaction":
         if extra.get("role") == "driver":
             tags.append("offr_i_driver")
@@ -116,6 +116,8 @@ def main():
          "execute as @e[tag=offr_body,distance=..6,limit=1] if score @s offr.id = #cur offr.tmp run scoreboard players operation @s offr.yaw = #ya offr.tmp",
          "execute store result score #yaw offr.tmp run data get entity @s Rotation[0] 1",
          "scoreboard players operation #yaw offr.tmp %= #c360 offr.dummy",
+         "# Rotation poate fi negativă (ex. -90): aducem în 0..359 înainte de împărțire",
+         "execute if score #yaw offr.tmp matches ..-1 run scoreboard players operation #yaw offr.tmp += #c360 offr.dummy",
          "scoreboard players operation #yaw offr.tmp /= #c10 offr.dummy",
          "execute if score #yaw offr.tmp matches 36.. run scoreboard players set #yaw offr.tmp 0",
          "execute if score #flip offr.dummy matches 1.. run scoreboard players add #yaw offr.tmp 18",

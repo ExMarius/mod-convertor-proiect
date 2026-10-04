@@ -7,9 +7,9 @@ summon minecraft:item_display ~ ~ ~ {Tags:["offr_f","offr_w1","offr_new_f"],item
 summon minecraft:item_display ~ ~ ~ {Tags:["offr_f","offr_w2","offr_new_f"],item:{id:"minecraft:iron_ingot",count:1,components:{"minecraft:item_model":"offroader:wheel"}},item_display:"none",teleport_duration:1,interpolation_duration:1,view_range:1.5,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.4f,1.4f,1.4f]},shadow_radius:0f}
 summon minecraft:item_display ~ ~ ~ {Tags:["offr_f","offr_w3","offr_new_f"],item:{id:"minecraft:iron_ingot",count:1,components:{"minecraft:item_model":"offroader:wheel"}},item_display:"none",teleport_duration:1,interpolation_duration:1,view_range:1.5,transformation:{left_rotation:[0f,0f,0f,1f],right_rotation:[0f,0f,0f,1f],translation:[0f,0f,0f],scale:[1.4f,1.4f,1.4f]},shadow_radius:0f}
 summon minecraft:text_display ~ ~ ~ {Tags:["offr_f","offr_name","offr_new_f"],text:{text:"Offroader",color:"gold",bold:true,italic:false},billboard:"center",teleport_duration:1,view_range:0.4,shadow_radius:0f}
-summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s1","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,Persistent:1b}
-summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s2","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,Persistent:1b}
-summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s3","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,Persistent:1b}
+summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s1","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b}
+summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s2","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b}
+summon minecraft:armor_stand ~ ~ ~ {Tags:["offr_f","offr_s3","offr_new_f","offr_seat"],Marker:1b,Invisible:1b,Invulnerable:1b,NoGravity:1b,PersistenceRequired:1b}
 summon minecraft:interaction ~ ~ ~ {Tags:["offr_f","offr_i0","offr_new_f","offr_i_driver"],width:1.0f,height:1.4f,response:1b}
 summon minecraft:interaction ~ ~ ~ {Tags:["offr_f","offr_i1","offr_new_f","offr_i_seat"],width:0.9f,height:1.3f,response:1b}
 summon minecraft:interaction ~ ~ ~ {Tags:["offr_f","offr_i2","offr_new_f","offr_i_seat"],width:0.9f,height:1.3f,response:1b}
