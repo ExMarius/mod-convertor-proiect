@@ -1,0 +1,35 @@
+name: deploy-panel
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'auto | discover | deploy'
+        default: 'auto'
+      opname:
+        description: 'Nume Minecraft pentru op (opțional)'
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  panel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rulează deploy pe panel
+        env:
+          PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
+          OPS_NAME: ${{ github.event.inputs.opname }}
+        run: bash deploy/panel.sh "${{ github.event.inputs.mode || 'auto' }}"
+
+      - name: Publică raportul
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          git add deploy-report/ || true
+          git commit -m "deploy: raport panel [skip ci]" || echo "nimic nou de comis"
+          git push || echo "push eșuat"
