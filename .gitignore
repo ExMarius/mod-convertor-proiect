@@ -2,3 +2,4 @@
 sources/
 # output
 offroader/release/
+__pycache__/
