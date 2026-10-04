@@ -1,6 +1,9 @@
 name: deploy-panel
 
 on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/**', '.github/workflows/deploy-panel.yml']
   workflow_dispatch:
     inputs:
       mode:
@@ -22,8 +25,12 @@ jobs:
       - name: Rulează deploy pe panel
         env:
           PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
-          OPS_NAME: ${{ github.event.inputs.opname }}
-        run: bash deploy/panel.sh "${{ github.event.inputs.mode || 'auto' }}"
+          INPUT_MODE: ${{ github.event.inputs.mode }}
+          INPUT_OPNAME: ${{ github.event.inputs.opname }}
+        run: |
+          MODE="${INPUT_MODE:-$(cat deploy/mode.txt 2>/dev/null || echo auto)}"
+          OPS_NAME="${INPUT_OPNAME:-$(cat deploy/opname.txt 2>/dev/null || true)}"
+          OPS_NAME="$OPS_NAME" bash deploy/panel.sh "$MODE"
 
       - name: Publică raportul
         if: always()
