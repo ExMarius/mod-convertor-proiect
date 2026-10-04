@@ -26,12 +26,16 @@ jobs:
         env:
           PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
           SFTP_CREDS: ${{ secrets.SFTP_CREDS }}
+          MCP_URL: ${{ secrets.MCP_URL }}
+          MCP_TOKEN: ${{ secrets.MCP_TOKEN }}
           INPUT_MODE: ${{ github.event.inputs.mode }}
           INPUT_OPNAME: ${{ github.event.inputs.opname }}
         run: |
           MODE="${INPUT_MODE:-$(cat deploy/mode.txt 2>/dev/null || echo auto)}"
           OPS_NAME="${INPUT_OPNAME:-$(cat deploy/opname.txt 2>/dev/null || true)}"
-          if [ -n "$SFTP_CREDS" ]; then
+          if [ -n "$MCP_URL" ]; then
+            MODE="$MODE" OPS_NAME="$OPS_NAME" python3 deploy/mcp_client.py "$MODE"
+          elif [ -n "$SFTP_CREDS" ]; then
             pip install -q paramiko
             OPS_NAME="$OPS_NAME" python3 deploy/sftp.py "$MODE"
           else
