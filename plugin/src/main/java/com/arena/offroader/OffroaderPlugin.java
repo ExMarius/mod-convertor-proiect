@@ -1,7 +1,6 @@
 package com.arena.offroader;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -18,6 +17,10 @@ import java.util.UUID;
  *  - W = accelerează, S = frână/mers înapoi
  *  - A/D = viraj (camera rămâne LIBERĂ — mașina nu se întoarce după mouse!)
  *  - Spațiu = săritură off-road, Shift = frână de mână
+ *  - Volanul (click-dreapta) pornește BOOST prin scorul offr.boost din datapack
+ *  - Fără combustibil (offr.fuel) mașina nu mai prinde viteză
+ * Șaua se scoate automat: clientul nu mai poate conduce singur calul,
+ * singura autoritate este pluginul (fără luptă client/server).
  * Modelul, sunetele, HUD-ul și combustibilul rămân în datapack (cooperare).
  */
 public final class OffroaderPlugin extends JavaPlugin {
@@ -27,11 +30,13 @@ public final class OffroaderPlugin extends JavaPlugin {
     /** unghiul mașinii (grade), pe vehicul */
     private final Map<UUID, Float> carYaw = new HashMap<>();
 
-    private static final double ACCEL = 0.022;    // accelerație (b/t²)
-    private static final double MAX_SPEED = 0.42; // ~30 km/h
+    private static final double ACCEL = 0.022;     // accelerație normală (b/t²)
+    private static final double ACCEL_BOOST = 0.046;
+    private static final double MAX_SPEED = 0.42;  // ~30 km/h
+    private static final double MAX_SPEED_BOOST = 0.62; // ~45 km/h
     private static final double MAX_REVERSE = 0.12;
     private static final double FRICTION = 0.91;
-    private static final float TURN_RATE = 3.2f;  // grade/tick la viraj complet
+    private static final float TURN_RATE = 3.2f;   // grade/tick la viraj complet
 
     @Override
     public void onEnable() {
@@ -40,6 +45,7 @@ public final class OffroaderPlugin extends JavaPlugin {
     }
 
     private void tick() {
+        boolean fuelBoard = Bukkit.getScoreboardManager().getMainScoreboard().getObjective("offr.fuel") != null;
         for (var world : Bukkit.getWorlds()) {
             for (Entity e : world.getEntities()) {
                 if (!(e instanceof Horse horse)) continue;
@@ -54,12 +60,25 @@ public final class OffroaderPlugin extends JavaPlugin {
                     speed.remove(horse.getUniqueId());
                     continue;
                 }
-                drive(horse, driver);
+
+                // șaua jos — doar pluginul conduce (clientul nu poate conduce fără șa)
+                if (horse.getInventory().hasSaddle()) {
+                    horse.getInventory().setSaddle(false);
+                }
+
+                drive(horse, driver, fuelBoard);
             }
         }
     }
 
-    private void drive(Horse horse, Player player) {
+    /** citește un scor datapack al entității (cheia = UUID) */
+    private int score(Entity e, String objective) {
+        var obj = Bukkit.getScoreboardManager().getMainScoreboard().getObjective(objective);
+        if (obj == null) return 0;
+        return obj.getScore(e.getUniqueId().toString()).getScore();
+    }
+
+    private void drive(Horse horse, Player player, boolean fuelBoard) {
         var in = player.getCurrentInput();
 
         float steer = 0f;
@@ -70,15 +89,24 @@ public final class OffroaderPlugin extends JavaPlugin {
         if (in.isForward()) throttle += 1;
         if (in.isBackward()) throttle -= 1;
 
+        // fără combustibil → fără tracțiune (fricțiunea rămâne)
+        int fuel = fuelBoard ? score(horse, "offr.fuel") : 1;
+        if (fuel <= 0) throttle = Math.min(throttle, 0);
+
+        // BOOST: setat de datapack la click-dreapta cu volanul (offr.boost, scade singur)
+        boolean boost = score(horse, "offr.boost") > 0;
+
         UUID id = horse.getUniqueId();
         double v = speed.getOrDefault(id, 0.0);
         float yaw = carYaw.getOrDefault(id, horse.getLocation().getYaw());
 
         // accelerație + frecare
-        v += throttle * ACCEL;
+        double accel = boost ? ACCEL_BOOST : ACCEL;
+        v += throttle * accel;
         v *= FRICTION;
         if (in.isSneak()) v = 0;                       // frână de mână (Shift)
-        if (v > MAX_SPEED) v = MAX_SPEED;
+        double max = boost ? MAX_SPEED_BOOST : MAX_SPEED;
+        if (v > max) v = max;
         if (v < -MAX_REVERSE) v = -MAX_REVERSE;
         if (Math.abs(v) < 0.003 && throttle == 0) v = 0;
 
