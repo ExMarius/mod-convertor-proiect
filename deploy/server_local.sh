@@ -26,7 +26,7 @@ if [ ! -f "$DIR/server.properties" ]; then
 server-port=25565
 online-mode=false
 enforce-secure-profile=false
-rcon=true
+enable-rcon=true
 rcon.port=25575
 rcon.password=arena-rcon
 level-type=minecraft\\:flat
