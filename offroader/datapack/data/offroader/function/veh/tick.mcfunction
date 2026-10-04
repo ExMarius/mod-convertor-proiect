@@ -21,6 +21,28 @@ scoreboard players operation @s offr.speed2 = #dx offr.tmp
 scoreboard players add @s offr.ticks 1
 execute if score @s offr.ticks matches 20.. run scoreboard players set @s offr.ticks 0
 
+# unghiul calului (zecimi de grad), normalizat 0..3599
+execute store result score @s offr.hyaw run data get entity @s Rotation[0] 10
+execute if score @s offr.hyaw matches ..-1 run scoreboard players operation @s offr.hyaw += #c3600 offr.dummy
+execute if score @s offr.hyaw matches 3600.. run scoreboard players operation @s offr.hyaw -= #c3600 offr.dummy
+
+# UNGHIUL MAȘINII (cyaw) urmărește calul cu maxim 4°/tick = 80°/s
+# — mașina virează PROGRESIV, ca un vehicul adevărat (nu snap cu mouse-ul)
+scoreboard players operation #dy offr.tmp = @s offr.hyaw
+scoreboard players operation #dy offr.tmp -= @s offr.cyaw
+execute if score #dy offr.tmp matches 1801.. run scoreboard players operation #dy offr.tmp -= #c3600 offr.dummy
+execute if score #dy offr.tmp matches ..-1801 run scoreboard players operation #dy offr.tmp += #c3600 offr.dummy
+execute if score #dy offr.tmp matches 41.. run scoreboard players set #dy offr.tmp 40
+execute if score #dy offr.tmp matches ..-41 run scoreboard players set #dy offr.tmp -40
+scoreboard players operation @s offr.cyaw += #dy offr.tmp
+execute if score @s offr.cyaw matches 3600.. run scoreboard players operation @s offr.cyaw -= #c3600 offr.dummy
+execute if score @s offr.cyaw matches ..-1 run scoreboard players operation @s offr.cyaw += #c3600 offr.dummy
+
+# unghiul vizual al roților față = viteza de virare curentă
+scoreboard players operation @s offr.steer = #dy offr.tmp
+execute if score @s offr.steer matches 8.. run scoreboard players set @s offr.steer 7
+execute if score @s offr.steer matches ..-8 run scoreboard players set @s offr.steer -7
+
 # roțile se învârt după viteza reală (chiar și fără șofer)
 execute if score @s offr.speed2 matches 25.. run scoreboard players add @s offr.wheel 1
 execute if score @s offr.speed2 matches 400.. run scoreboard players add @s offr.wheel 1

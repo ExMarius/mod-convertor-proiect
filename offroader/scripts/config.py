@@ -27,7 +27,14 @@ VEHICLE_ORIGIN_Y = 4 * U   # 0.35 blocuri
 
 # cât mai jos e așezat armor stand-ul de scaun față de poziția din mod
 # (compensează offsetul de „călărie" al jucătorului; se reglează în joc)
-SEAT_RIDER_DROP = 0.35
+SEAT_RIDER_DROP = 0.0
+
+# deplasarea întregii mașini (toți followerii) astfel încât SCAUNUL
+# șoferului să fie exact sub jucător (jucătorul călare stă în centrul
+# calului, deci aducem scaunul la centru: shift = -poziția_scaunului)
+# scaunul șoferului în mod: (5, 4, -3) -> mc local (^x,^y,^z) = (-5U, ·, -3U)
+# shift-ul = aducem scaunul sub jucătorul din centrul calului: (+5U, 0, +3U)
+CAR_SHIFT = (5 * U, 0.0, 3 * U)   # (+0.44 stânga->dreapta, 0, +0.26 față)
 
 
 def mod_to_mc(x, y, z):
@@ -44,37 +51,41 @@ def mod_to_mc(x, y, z):
 #   tip: item_display | text_display | armor_stand | interaction
 #   extra: yaw/spin/steer pentru display-uri; w/h pentru interaction-uri
 # ---------------------------------------------------------------------------
+def _shifted(pos):
+    return (pos[0] + CAR_SHIFT[0], pos[1] + CAR_SHIFT[1], pos[2] + CAR_SHIFT[2])
+
+
 def _seat(tag, seat_xyz):
     x, y, z = mod_to_mc(*seat_xyz)
     return (tag, "armor_stand", None,
-            (x, y - SEAT_RIDER_DROP, z), {})
+            _shifted((x, y - SEAT_RIDER_DROP, z)), {})
 
 
 def _inter(tag, seat_xyz, role, w=0.9, h=1.3):
     x, y, z = mod_to_mc(*seat_xyz)
     return (tag, "interaction", None,
-            (x, y, z), {"role": role, "w": w, "h": h})
+            _shifted((x, y, z)), {"role": role, "w": w, "h": h})
 
 
 FOLLOWERS = [
     # caroseria — geometria EXACTĂ din mod (163 cuburi), centrată pe origine
     ("offr_body", "item_display", "offroader:body",
-     mod_to_mc(0, 0, 0), {"yaw": True}),
+     _shifted(mod_to_mc(0, 0, 0)), {"yaw": True}),
     # volanul din mașină (modelul go_kart, transformarea renderer-ului
     # este coaptă în display.none al modelului swheel_car)
     ("offr_swheel", "item_display", "offroader:swheel_car",
-     mod_to_mc(0, 0, 0), {"yaw": True}),
+     _shifted(mod_to_mc(0, 0, 0)), {"yaw": True}),
     # roțile — față (cu direcție), spate
     ("offr_w0", "item_display", "offroader:wheel",   # față-stânga
-     mod_to_mc(-10, 0, 14.5), {"yaw": True, "spin": True, "steer": True}),
+     _shifted(mod_to_mc(-10, 0, 14.5)), {"yaw": True, "spin": True, "steer": True}),
     ("offr_w1", "item_display", "offroader:wheel",   # față-dreapta
-     mod_to_mc(10, 0, 14.5), {"yaw": True, "spin": True, "steer": True}),
+     _shifted(mod_to_mc(10, 0, 14.5)), {"yaw": True, "spin": True, "steer": True}),
     ("offr_w2", "item_display", "offroader:wheel",   # spate-stânga
-     mod_to_mc(-10, 0, -14.5), {"yaw": True, "spin": True}),
+     _shifted(mod_to_mc(-10, 0, -14.5)), {"yaw": True, "spin": True}),
     ("offr_w3", "item_display", "offroader:wheel",   # spate-dreapta
-     mod_to_mc(10, 0, -14.5), {"yaw": True, "spin": True}),
+     _shifted(mod_to_mc(10, 0, -14.5)), {"yaw": True, "spin": True}),
     # numele deasupra mașinii
-    ("offr_name", "text_display", None, (0.0, 2.15, 0.0), {}),
+    ("offr_name", "text_display", None, _shifted((0.0, 2.15, 0.0)), {}),
     # scaunele pasagerilor (șoferul stă pe cal, ca să poată conduce)
     _seat("offr_s1", (-5, 4, -3)),
     _seat("offr_s2", (5, 11.5, -14.5)),

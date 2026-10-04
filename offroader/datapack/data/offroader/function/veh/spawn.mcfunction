@@ -17,6 +17,9 @@ scoreboard players set @e[tag=offr_new,limit=1] offr.applied 1
 scoreboard players set @e[tag=offr_new,limit=1] offr.wasdriven 0
 scoreboard players set @e[tag=offr_new,limit=1] offr.horncd 0
 scoreboard players set @e[tag=offr_new,limit=1] offr.steer 0
+execute store result score @e[tag=offr_new,limit=1] offr.cyaw run data get entity @e[tag=offr_new,limit=1] Rotation[0] 10
+execute if score @e[tag=offr_new,limit=1] offr.cyaw matches ..-1 run scoreboard players operation @e[tag=offr_new,limit=1] offr.cyaw += #c3600 offr.dummy
+execute if score @e[tag=offr_new,limit=1] offr.cyaw matches 3600.. run scoreboard players operation @e[tag=offr_new,limit=1] offr.cyaw -= #c3600 offr.dummy
 execute store result score @e[tag=offr_new,limit=1] offr.yaw0 run data get entity @e[tag=offr_new,limit=1] Rotation[0] 100
 execute store result score @e[tag=offr_new,limit=1] offr.x run data get entity @e[tag=offr_new,limit=1] Pos[0] 100
 execute store result score @e[tag=offr_new,limit=1] offr.z run data get entity @e[tag=offr_new,limit=1] Pos[2] 100

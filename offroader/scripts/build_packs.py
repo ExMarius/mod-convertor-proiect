@@ -38,7 +38,27 @@ def ok(msg):
 
 
 # ---------------------------------------------------------------------------
+def ensure_sources():
+    """sources/ (gitignored) dispare între sesiuni — re-extrage din git."""
+    src = os.path.abspath(os.path.join(HERE, "..", "..", "sources"))
+    dev = os.path.join(src, "dev", "MrCrayfishVehicleMod-1.16.X-dev",
+                       "src", "main", "resources", "assets", "vehicle")
+    if os.path.isdir(dev):
+        return
+    print("-> sources/ lipsește; re-extract din git (origin/main)...")
+    repo = os.path.abspath(os.path.join(HERE, "..", ".."))
+    zdev = os.path.join(src, "MrCrayfishVehicleMod-1.16.X-dev.zip")
+    os.makedirs(os.path.join(src, "dev"), exist_ok=True)
+    with open(zdev, "wb") as f:
+        subprocess.run(["git", "show", "origin/main:MrCrayfishVehicleMod-1.16.X-dev.zip"],
+                       cwd=repo, stdout=f, check=True)
+    with zipfile.ZipFile(zdev) as z:
+        z.extractall(os.path.join(src, "dev"))
+    print("   sources/ re-extras.")
+
+
 def regen():
+    ensure_sources()
     for script in ("convert_from_mod.py", "gen_quats.py",
                    "gen_layout.py", "gen_sounds.py"):
         print(f"-> regen {script}")

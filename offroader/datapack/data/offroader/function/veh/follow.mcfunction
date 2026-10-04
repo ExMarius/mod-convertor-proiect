@@ -1,17 +1,14 @@
 # Generat de gen_layout.py — nu edita manual.
 # 1) indicii de rotire (yaw caroserie + unghi roți) în storage pt macro-uri
 scoreboard players operation #cur offr.tmp = @s offr.id
-execute store result score @s offr.yaw run data get entity @s Rotation[0] 100
 # salvează starea pe caroserie (pt. reconstrucția motorului — veh/revive)
 scoreboard players operation #fu offr.tmp = @s offr.fuel
-scoreboard players operation #ya offr.tmp = @s offr.yaw
-execute as @e[tag=offr_body,distance=..6,limit=1] if score @s offr.id = #cur offr.tmp run scoreboard players operation @s offr.fuel = #fu offr.tmp
-execute as @e[tag=offr_body,distance=..6,limit=1] if score @s offr.id = #cur offr.tmp run scoreboard players operation @s offr.yaw = #ya offr.tmp
-execute store result score #yaw offr.tmp run data get entity @s Rotation[0] 1
-scoreboard players operation #yaw offr.tmp %= #c360 offr.dummy
-# Rotation poate fi negativă (ex. -90): aducem în 0..359 înainte de împărțire
-execute if score #yaw offr.tmp matches ..-1 run scoreboard players operation #yaw offr.tmp += #c360 offr.dummy
-scoreboard players operation #yaw offr.tmp /= #c10 offr.dummy
+scoreboard players operation #ya offr.tmp = @s offr.cyaw
+execute as @e[tag=offr_body,distance=..64,limit=1] if score @s offr.id = #cur offr.tmp run scoreboard players operation @s offr.fuel = #fu offr.tmp
+execute as @e[tag=offr_body,distance=..64,limit=1] if score @s offr.id = #cur offr.tmp run scoreboard players operation @s offr.yaw = #ya offr.tmp
+# indexul caroseriei = UNGHIUL MAȘINII (cyaw, zecimi de grad), nu al calului
+scoreboard players operation #yaw offr.tmp = @s offr.cyaw
+scoreboard players operation #yaw offr.tmp /= #c100 offr.dummy
 execute if score #yaw offr.tmp matches 36.. run scoreboard players set #yaw offr.tmp 0
 execute if score #flip offr.dummy matches 1.. run scoreboard players add #yaw offr.tmp 18
 execute if score #yaw offr.tmp matches 36.. run scoreboard players set #yaw offr.tmp 0

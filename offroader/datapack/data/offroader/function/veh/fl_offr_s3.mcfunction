@@ -1,2 +1,2 @@
 # Generat de gen_layout.py — nu edita manual.
-tp @s ^0.44 ^0.31 ^-1.65
+tp @s ^0.88 ^0.66 ^-1.39
