@@ -34,7 +34,7 @@ jobs:
           OPS_NAME="${INPUT_OPNAME:-$(cat deploy/opname.txt 2>/dev/null || true)}"
           case "$MODE" in
             mcp-begin|mcp-finish)
-              python3 deploy/oauth.py "$MODE"
+              python3 deploy/oauth.py "${MODE#mcp-}"
               ;;
             *)
               TOK=""
