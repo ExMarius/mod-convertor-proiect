@@ -10,6 +10,10 @@ execute store result score #ok offr.tmp if score #sp offr.tmp matches ..100
 data modify storage offroader:st msg set value "viteza zero in parcare"
 function offroader:selftest/check with storage offroader:st
 
+# scoatem itemele offroader din teste anterioare (inventarul poate fi plin)
+clear @s minecraft:warped_fungus_on_a_stick[item_model="offroader:key"]
+clear @s minecraft:carrot_on_a_stick[item_model="offroader:steering_wheel"]
+clear @s minecraft:fishing_rod[item_model="offroader:jerrycan"]
 function offroader:give
 execute store result score #ok offr.tmp if items entity @s contents minecraft:warped_fungus_on_a_stick
 data modify storage offroader:st msg set value "give a dat itemele (functia ruleaza)"

@@ -26,8 +26,11 @@ function offroader:selftest/check with storage offroader:st
 
 # urcăm la volan
 ride @s mount @e[type=minecraft:horse,tag=offr_veh,limit=1]
+execute store result score #ok offr.tmp if entity @s[nbt={RootVehicle:{}}]
+data modify storage offroader:st msg set value "jucatorul sta la volan (RootVehicle pe jucator)"
+function offroader:selftest/check with storage offroader:st
 execute store result score #ok offr.tmp if entity @e[type=minecraft:horse,tag=offr_veh,limit=1,nbt={Passengers:[{}]}]
-data modify storage offroader:st msg set value "jucatorul a urcat la volan (ride a functionat)"
+data modify storage offroader:st msg set value "calul are pasager (Passengers pe cal)"
 function offroader:selftest/check with storage offroader:st
 data modify storage offroader:st p set value "step3"
 schedule function offroader:selftest/step 10t

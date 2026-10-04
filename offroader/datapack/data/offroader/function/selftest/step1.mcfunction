@@ -15,7 +15,13 @@ execute store result score #ok offr.tmp if score @e[type=minecraft:horse,tag=off
 data modify storage offroader:st msg set value "rezervor plin la spawn (fuel=600)"
 function offroader:selftest/check with storage offroader:st
 
-# salvăm heartbeat-ul ca să verificăm în pasul 2 că bucla tick e vie
+# chemăm tick-ul DIRECT: dacă funcția e compilată, #hb sare la 1+
+function offroader:tick
+execute store result score #ok offr.tmp if score #hb offr.dummy matches 1..
+data modify storage offroader:st msg set value "functia tick exista si ruleaza chemata direct"
+function offroader:selftest/check with storage offroader:st
+
+# salvăm heartbeat-ul ca să verificăm în pasul 2 că TAG-ul tick rulează
 scoreboard players operation #hb1 offr.tmp = #hb offr.dummy
 data modify storage offroader:st p set value "step2"
 schedule function offroader:selftest/step 10t
