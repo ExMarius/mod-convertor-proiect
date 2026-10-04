@@ -42,6 +42,7 @@ mașina = cal invizibil (fizica mersului)
 | `veh/hud`, `veh/hud_ok`, `veh/hud_low` | HUD action-bar (km/h, combustibil) |
 | `veh/horn`, `veh/boost`, `veh/refuel` | claxon, boost, reumplere |
 | `veh/board_driver`, `veh/board_pass`, `veh/check_*_i` | urcarea în mașină |
+| `selftest/*` | test automat: `/function offroader:selftest` — 18 verificări, verdict în chat |
 | `veh/follow`, `veh/fl_*`, `veh/set_yaw`, `veh/set_spin`, `veh/init_quats`, `veh/spawn_followers` | GENERATE — nu edita manual |
 
 ## Calibrare

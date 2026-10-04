@@ -37,6 +37,18 @@ mașinii din mod — nu s-au extras/copiat asset-uri din jar-ul modului.
 - `enable-command-block` nu e necesar; nimic nu trebuie activat suplimentar.
 - Pack-urile merg pe single-player la fel (pune ambele ZIP-uri).
 
+## Testare
+
+Serverul de test e la tine — vezi **`offroader/testserver/README.md`** (setup în
+2 minute, inclusiv cu script automat). Verificarea de sine stătătoare:
+
+```
+/function offroader:selftest
+```
+
+rulează 18 teste automate (spawn → șofat → boost → alimentare → depozitare)
+și afișează verdictul în chat.
+
 ## Utilizare
 
 - **Cheia, click-dreapta**: dacă nu ești în mașină →vehicleul se cheamă la 1,6

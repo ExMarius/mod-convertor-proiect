@@ -75,7 +75,8 @@ def validate_mcfunctions():
     known_verbs = ("scoreboard", "execute", "give", "summon", "tp", "kill",
                    "playsound", "title", "tellraw", "data", "function",
                    "attribute", "ride", "return", "tag", "say", "setblock",
-                   "particle", "stopsound", "effect", "clear", "fill")
+                   "particle", "stopsound", "effect", "clear", "fill",
+                   "schedule")
     referenced = set()
     for name, path in funcs.items():
         with open(path, encoding="utf-8") as f:
@@ -98,7 +99,8 @@ def validate_mcfunctions():
                 if verb not in known_verbs:
                     err(f"{name}:{i} verb necunoscut «{verb}»: {line[:90]}")
                 for ref in re.findall(r"function (offroader:[a-z0-9_/]+)", line):
-                    referenced.add(ref)
+                    if not line.lstrip().startswith("$"):
+                        referenced.add(ref)
     for ref in sorted(referenced):
         if ref not in funcs:
             err(f"funcție referențiată inexistentă: {ref}")
