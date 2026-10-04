@@ -1,0 +1,44 @@
+{
+  "engine": {
+    "sounds": [
+      {
+        "name": "offroader:engine"
+      }
+    ]
+  },
+  "start": {
+    "sounds": [
+      {
+        "name": "offroader:start"
+      }
+    ]
+  },
+  "stop": {
+    "sounds": [
+      {
+        "name": "offroader:stop"
+      }
+    ]
+  },
+  "horn": {
+    "sounds": [
+      {
+        "name": "offroader:horn"
+      }
+    ]
+  },
+  "boost": {
+    "sounds": [
+      {
+        "name": "offroader:boost"
+      }
+    ]
+  },
+  "slosh": {
+    "sounds": [
+      {
+        "name": "offroader:slosh"
+      }
+    ]
+  }
+}

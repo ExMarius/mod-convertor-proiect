@@ -1,0 +1,3 @@
+$execute if entity @e[type=minecraft:horse,tag=offr_veh,distance=..8,limit=1,sort=nearest,scores={offr.id=$(id)},nbt={Passengers:[{}]}] run title @s actionbar {"text":"Cineva șofează deja!","color":"red"}
+$execute unless entity @e[type=minecraft:horse,tag=offr_veh,distance=..8,limit=1,sort=nearest,scores={offr.id=$(id)},nbt={Passengers:[{}]}] run ride @s mount @e[type=minecraft:horse,tag=offr_veh,distance=..8,limit=1,sort=nearest,scores={offr.id=$(id)}]
+$execute unless entity @e[type=minecraft:horse,tag=offr_veh,distance=..8,limit=1,sort=nearest,scores={offr.id=$(id)},nbt={Passengers:[{}]}] run playsound minecraft:entity.horse.armor master @a[distance=..8] ~ ~ ~ 0.6 0.7
