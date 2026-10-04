@@ -1,8 +1,0 @@
-{
-  "pack": {
-    "pack_format": 121,
-    "min_format": 88,
-    "max_format": [121, 0],
-    "description": "Offroader vanilla — 4x4 condus cu WASD, combustibil, claxon, 4 locuri. Inspirat de MrCrayfish's Vehicle Mod."
-  }
-}
