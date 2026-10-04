@@ -50,4 +50,4 @@ execute unless score #spinflip offr.dummy = #spinflip offr.dummy run scoreboard 
 # --- tabelele de quaternioni pentru rotiri ---
 function offroader:veh/init_quats
 
-tellraw @a {text:"[Offroader] Datapack încărcat! Obiecte: /function offroader:give",color:"gold"}
+tellraw @a {"text":"[Offroader] Datapack încărcat! Dă-ți obiectele: /function offroader:give","color":"gold"}

@@ -30,4 +30,4 @@ tag @e[tag=offr_new] remove offr_new
 # feedback: sunetul „destroyed" din mod + fum + mesaj
 playsound offroader:destroyed master @a[distance=..24] ~ ~ ~ 1 1
 particle minecraft:poof ~ ~1 ~ 0.5 0.5 0.5 0.05 20
-tellraw @a[distance=..24] {text:"[Offroader] Motor distrus — reconstruit automat! Urcă din nou la volan.",color:"red"}
+tellraw @a[distance=..24] {"text":"[Offroader] Motor distrus — reconstruit automat! Urcă din nou la volan.","color":"red"}

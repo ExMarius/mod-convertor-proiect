@@ -28,4 +28,4 @@ execute as @e[tag=offr_new,limit=1] at @s run function offroader:veh/spawn_follo
 tag @e[tag=offr_new] remove offr_new
 
 playsound offroader:start master @a[distance=..24] ~ ~ ~ 1 1
-tellraw @s {text:"[Offroader] Scos din garaj! Click-dreapta pe scaunul din față (cel cu volanul) ca să șofezi.",color:"yellow"}
+tellraw @s {"text":"[Offroader] Scos din garaj! Click-dreapta pe scaunul din față (cel cu volanul) ca să șofezi.","color":"yellow"}

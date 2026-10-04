@@ -1,6 +1,8 @@
 # TEST AUTOMAT — se rulează de un jucător (op): /function offroader:selftest
 # Parcurge viața completă a mașinii în ~5 secunde și raportează [OK]/[EȘEC].
 # ATENȚIE: șterge vehiculele offroader aflate la maxim 24 de blocuri!
+# oprește orice pas programat dintr-un test anterior
+schedule clear offroader:selftest/step
 tag @s add offr_tester
 scoreboard players set #pass offr.tmp 0
 scoreboard players set #fail offr.tmp 0

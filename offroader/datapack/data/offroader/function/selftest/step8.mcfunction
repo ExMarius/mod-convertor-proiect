@@ -8,4 +8,4 @@ tellraw @s [{"text":"[Offroader TEST] FINAL: ","color":"aqua","bold":true},{"sco
 execute if score #fail offr.tmp matches 0 run tellraw @s {"text":"TOTUL VERDE! Trimite-mi lista + ce vezi cu ochii (model, sunete, pozitia soferului).","color":"green","bold":true}
 execute if score #fail offr.tmp matches 1.. run tellraw @s {"text":"SUNT ERORI - copiaza toata lista de mai sus si trimite-mi-o.","color":"red","bold":true}
 tag @s remove offr_tester
-data remove storage offroader:st
+data remove storage offroader:st p
