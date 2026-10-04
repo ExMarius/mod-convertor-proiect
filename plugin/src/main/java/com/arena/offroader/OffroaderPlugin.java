@@ -62,8 +62,9 @@ public final class OffroaderPlugin extends JavaPlugin {
                 }
 
                 // șaua jos — doar pluginul conduce (clientul nu poate conduce fără șa)
-                if (horse.getInventory().hasSaddle()) {
-                    horse.getInventory().setSaddle(false);
+                var inv = horse.getInventory();
+                if (inv.getSaddle() != null) {
+                    inv.setSaddle(null);
                 }
 
                 drive(horse, driver, fuelBoard);

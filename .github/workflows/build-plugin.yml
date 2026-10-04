@@ -21,7 +21,20 @@ jobs:
           java-version: '21'
 
       - name: Compilare plugin
-        run: mvn -q -f plugin/pom.xml package
+        run: |
+          set -o pipefail
+          mvn -f plugin/pom.xml package 2>&1 | tee plugin/build-output.txt
+
+      - name: Publică erorile în repo (la eșec)
+        if: failure()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          mkdir -p plugin/release
+          cp plugin/build-output.txt plugin/release/build-errors.txt
+          git add plugin/release/build-errors.txt
+          git commit -m "build: erori de compilare [skip ci]" || echo "nimic"
+          git push || echo "push eșuat"
 
       - name: Verificare jar
         run: |
@@ -51,6 +64,7 @@ jobs:
           cp plugin/target/OffroaderPlugin.jar plugin/release/OffroaderPlugin.jar
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
-          git add plugin/release/OffroaderPlugin.jar
+          git rm -f --cached plugin/release/build-errors.txt 2>/dev/null || true
+git add plugin/release/OffroaderPlugin.jar
           git commit -m "build: OffroaderPlugin.jar (CI) [skip ci]" || echo "nimic nou de comis"
           git push
