@@ -7,11 +7,14 @@ JAVA_BIN="${JAVA_BIN:-/usr/local/lib/python3.11/dist-packages/jdk4py/java-runtim
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 
 [ -x "$JAVA_BIN" ] || { echo "java lipsă: $JAVA_BIN (pip3 install jdk4py)"; exit 1; }
-[ -f "$REPO/server/paper-1.21.4.jar" ] || { echo "lipsește server/paper-1.21.4.jar (CI fetch-paper)"; exit 1; }
+if [ -f "$REPO/server/paper-1.21.4.jar" ]; then
+  cp "$REPO/server/paper-1.21.4.jar" "$DIR/paper.jar"
+elif [ ! -f "$DIR/paper.jar" ]; then
+  echo "lipsește paper.jar (nici în repo, nici în $DIR)"; exit 1
+fi
 [ -f "$REPO/plugin/release/OffroaderPlugin.jar" ] || { echo "lipsește plugin/release/OffroaderPlugin.jar (CI build-plugin)"; exit 1; }
 
 mkdir -p "$DIR/plugins" "$DIR/world/datapacks"
-cp "$REPO/server/paper-1.21.4.jar" "$DIR/paper.jar"
 cp "$REPO/plugin/release/OffroaderPlugin.jar" "$DIR/plugins/"
 cp "$REPO/offroader/release/OffroaderDatapack.zip" "$DIR/world/datapacks/"
 
