@@ -22,7 +22,7 @@ import tarfile
 import urllib.request
 import zipfile
 
-VERSIUNE = sys.argv[1] if len(sys.argv) > 1 else "26.3"
+VERSIUNE = sys.argv[1] if len(sys.argv) > 1 else "1.21.4"
 HOME = os.path.expanduser("~")
 MC = os.path.join(HOME, ".cache", "mc-server")
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))

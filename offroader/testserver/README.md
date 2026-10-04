@@ -6,13 +6,13 @@ deci **serverul de Minecraft îl pornești tu** — dar am făcut totul cât mai
 1. **Selftest integrat** — o singură comandă în joc testează automat tot datapack-ul
    și îți afișează `[OK]/[ESEC]` pe fiecare funcționalitate. Îmi trimiși lista
    (screenshot/copiere) și corectez orice e roșu.
-2. **Script de setup** — îți pregătește serverul oficial 26.3 cu 2 comenzi.
+2. **Script de setup** — îți pregătește serverul oficial 1.21.4 cu 2 comenzi.
 
 ---
 
 ## Varianta A — Single-player (cel mai rapid, 2 minute)
 
-1. Minecraft Launcher → profil **26.3** → creează o lume nouă (Cheats: ACTIVATE,
+1. Minecraft Launcher → profil **1.21.4** → creează o lume nouă (Cheats: ACTIVATE,
    tip: Flat/Supraplă — mai ușor de testat).
 2. Copiază `offroader/release/OffroaderDatapack.zip` în:
    - Windows: `%appdata%\.minecraft\saves\<lumea>\datapacks\`
@@ -32,7 +32,7 @@ deci **serverul de Minecraft îl pornești tu** — dar am făcut totul cât mai
 
 ```bash
 cd mod-convertor-proiect
-python3 offroader/testserver/setup_server.py 26.3
+python3 offroader/testserver/setup_server.py 1.21.4
 cd ~/.cache/mc-server
 ./java/bin/java -Xms512M -Xmx2G -jar server.jar nogui
 ```
@@ -48,12 +48,12 @@ Pe Windows: instalează Python de la python.org, apoi_rulează la fel în cmd
 ### Manual (fără Python)
 
 1. Descarcă `server.jar` de la [minecraft.net/download/server](https://www.minecraft.net/download/server)
-   (versiunea **26.3**) într-un folder nou.
-2. Ai nevoie de Java (versiunea cerată de 26.3; dacă lipsește: [adoptium.net](https://adoptium.net)).
+   (versiunea **1.21.4**) într-un folder nou.
+2. Ai nevoie de Java (versiunea cerată de 1.21.4; dacă lipsește: [adoptium.net](https://adoptium.net)).
 3. În folder: `java -Xms512M -Xmx2G -jar server.jar nogui` → se oprește cu eroare EULA.
 4. Editează `eula.txt`: `eula=true`. Rulează din nou — apare lumea.
 5. Copiază `OffroaderDatapack.zip` în `world/datapacks/` (creează folderul).
-6. Conectează-te cu clientul 26.3 la `localhost`, instalează resource pack-ul client-side.
+6. Conectează-te cu clientul 1.21.4 la `localhost`, instalează resource pack-ul client-side.
 
 ---
 
@@ -94,7 +94,7 @@ regenerez pachetul cu corecțiile în câteva minute.
 ## Server cu prieteni (opțional)
 
 - **LAN**: din single-player → Esc → „Open to LAN".
-- **Hosting gratuit** (Aternos etc.): caută versiunea 26.3 (e nouă, s-ar săgeta
+- **Hosting gratuit** (Aternos etc.): caută versiunea 1.21.4 (e nouă, s-ar săgeta
   aparate câteva zile); încarcă `OffroaderDatapack.zip` ca datapack.
 - **VPS/port forwarding**: portul 25565 TCP; fiecare jucător instalează
   resource pack-ul client-side.

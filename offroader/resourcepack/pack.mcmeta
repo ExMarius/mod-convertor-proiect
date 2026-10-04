@@ -1,11 +1,6 @@
 {
   "pack": {
-    "pack_format": 97,
-    "min_format": 69,
-    "max_format": [
-      97,
-      1
-    ],
-    "description": "Offroader v3 (26.3) — model 1:1 din mod + volan fix"
+    "pack_format": 46,
+    "description": "Offroader v4 (MC 1.21.4) — modelul 3D 1:1 + sunetele din mod"
   }
 }

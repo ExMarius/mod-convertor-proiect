@@ -44,8 +44,9 @@ def summon_line(tag, kind, model, pos, extra):
                 f'{TRANSFORM},shadow_radius:0f}}')
     if kind == "text_display":
         tags_str = ",".join(f'"{t}"' for t in tags)
+        txt = "'{\"text\":\"Offroader\",\"color\":\"gold\",\"bold\":true}'"
         return (f'summon minecraft:text_display ~ ~ ~ {{Tags:[{tags_str}],'
-                f'text:{{text:"Offroader",color:"gold",bold:true,italic:false}},'
+                f'text:{txt},'
                 f'billboard:"center",teleport_duration:1,view_range:0.4,'
                 f'shadow_radius:0f}}')
     if kind == "armor_stand":

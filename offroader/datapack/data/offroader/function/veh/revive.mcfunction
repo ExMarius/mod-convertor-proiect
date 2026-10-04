@@ -6,7 +6,7 @@ scoreboard players operation #ya offr.tmp = @s offr.yaw
 execute store result score #px offr.tmp run data get entity @s Pos[0] 100
 execute store result score #pz offr.tmp run data get entity @s Pos[2] 100
 
-summon minecraft:horse ~ ~ ~ {Tags:["offr_veh","offr_new"],Tame:1b,Silent:1b,Invulnerable:1b,PersistenceRequired:1b,NoAI:1b,active_effects:[{id:"minecraft:invisibility",amplifier:0b,duration:-1,show_particles:0b,show_icon:0b}],SaddleItem:{id:"minecraft:saddle",count:1},CustomName:{text:"Offroader"},attributes:[{id:"minecraft:movement_speed",base:0.3375},{id:"minecraft:jump_strength",base:0.85},{id:"minecraft:max_health",base:30}],Health:30f}
+summon minecraft:horse ~ ~ ~ {Tags:["offr_veh","offr_new"],Tame:1b,Silent:1b,Invulnerable:1b,Invisible:1b,PersistenceRequired:1b,NoAI:1b,active_effects:[{id:"minecraft:invisibility",amplifier:0b,duration:-1,show_particles:0b,show_icon:0b}],SaddleItem:{id:"minecraft:saddle",count:1},attributes:[{id:"minecraft:movement_speed",base:0.3375},{id:"minecraft:jump_strength",base:0.85},{id:"minecraft:max_health",base:30}],Health:30f}
 
 # orientarea și starea, restaurate
 execute store result entity @e[tag=offr_new,limit=1] Rotation[0] float 0.01 run scoreboard players get #ya offr.tmp

@@ -5,7 +5,7 @@ Două pachete independente:
 - **`datapack/`** → `release/OffroaderDatapack.zip` — logica vehiculului.
 - **`resourcepack/`** → `release/OffroaderResourcePack.zip` — modelul, itemele, sunetele.
 
-Ținta: **Minecraft Java 26.3** (datapack format 121 / resource pack format 97).
+Ținta: **Minecraft Java 1.21.4** (datapack format 61 / resource pack format 46).
 
 ## Arhitectură
 

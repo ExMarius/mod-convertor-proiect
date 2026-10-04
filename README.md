@@ -1,4 +1,4 @@
-# Offroader 1:1 — vanilla datapack + resourcepack (Java 26.3)
+# Offroader 1:1 — vanilla datapack + resourcepack (MC 1.21.4)
 
 Recreerea offroader-ului din **MrCrayfish's Vehicle Mod 0.45.2** pe un server
 **NEMODDAT**, folosind **asset-urile reale ale modului** (model, texturi,
@@ -24,11 +24,23 @@ sunete), convertite automat în formate vanilla.
 Comportament (cal invizibil = fizică): condus WASD, boost, combustibil 600
 (≈10 min), bidon +20%, claxon, 4 locuri, direcția roților față după viraj.
 
-## Instalare
+## Instalare (1.21.4 — versiune matură și stabilă)
 
-1. **Server/lume 26.3**: `OffroaderDatapack.zip` → `world/datapacks/`
+1. **Lume nouă în 1.21.4** (lumea de 26.3 NU se poate deschide în 1.21.4!): `OffroaderDatapack.zip` → `world/datapacks/`
 2. **Client**: `OffroaderResourcePack.zip` → `resourcepacks/` + activare
 3. `/reload` → `/function offroader:give` → `/function offroader:selftest`
+
+## Corespondența cu comenzile din mod
+
+| În mod | Aici |
+|---|---|
+| W/S accelerație/frână | W/S (calul) |
+| A/D viraj | A/D — roțile față se întorc vizual |
+| Spațiu (frână de mână) | Spațiu = săritură off-road |
+| Cheia la contact → pornește motorul | urcarea la volan pornește motorul (sunet de demaraj) |
+| H (claxon) | click-dreapta cu cheia, din mașină |
+| bidon la gura de alimentare | click-dreapta cu bidonul lângă mașină (+20%) |
+| coborâre Shift | Shift (sneak) |
 
 Ambele ZIP-uri: `offroader/release/`.
 
