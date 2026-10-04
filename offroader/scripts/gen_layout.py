@@ -48,6 +48,7 @@ def summon_line(tag, kind, model, pos, extra):
         return (f'summon minecraft:text_display ~ ~ ~ {{Tags:[{tags_str}],'
                 f'text:{txt},'
                 f'billboard:"center",teleport_duration:1,view_range:0.4,'
+                f'alignment:"center",'
                 f'shadow_radius:0f}}')
     if kind == "armor_stand":
         tags.append("offr_seat")

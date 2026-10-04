@@ -1,11 +1,13 @@
+# heartbeat — contorizează că bucla tick e vie (folosit de selftest)
+scoreboard players add #hb offr.dummy 1
 # Bucla principală (20/s). Țintă: 1.21.4.
 # Ordinea e defensivă: întâi acțiunile jucătorilor și vehiculele (critice),
 # resigilarea NBT ultima (orice problemă acolo nu oprește restul).
 
 # --- click-dreapta cu itemele custom (verificăm și modelul din mână) ---
-execute as @a[scores={offr.key=1..}] at @s if items entity @s weapon.mainhand minecraft:warped_fungus_on_a_stick[minecraft:item_model="offroader:key"] run function offroader:item_use/key
-execute as @a[scores={offr.throttle=1..}] at @s if items entity @s weapon.mainhand minecraft:carrot_on_a_stick[minecraft:item_model="offroader:steering_wheel"] run function offroader:item_use/throttle
-execute as @a[scores={offr.can=1..}] at @s if items entity @s weapon.mainhand minecraft:fishing_rod[minecraft:item_model="offroader:jerrycan"] run function offroader:item_use/jerrycan
+execute as @a[scores={offr.key=1..}] at @s if items entity @s weapon.mainhand minecraft:warped_fungus_on_a_stick[item_model="offroader:key"] run function offroader:item_use/key
+execute as @a[scores={offr.throttle=1..}] at @s if items entity @s weapon.mainhand minecraft:carrot_on_a_stick[item_model="offroader:steering_wheel"] run function offroader:item_use/throttle
+execute as @a[scores={offr.can=1..}] at @s if items entity @s weapon.mainhand minecraft:fishing_rod[item_model="offroader:jerrycan"] run function offroader:item_use/jerrycan
 
 # consumă trigger-ele rămase (inclusiv iteme vanilla cu același tip)
 scoreboard players set @a[scores={offr.key=1..}] offr.key 0

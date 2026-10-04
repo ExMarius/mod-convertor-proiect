@@ -17,7 +17,17 @@ execute store result score #ok offr.tmp run data get entity @e[tag=offr_name,lim
 data modify storage offroader:st msg set value "numele masinii exista (text_display)"
 function offroader:selftest/check with storage offroader:st
 
+# bucla tick e vie? (heartbeat-ul trebuie să fi avansat ~10)
+scoreboard players operation #hb2 offr.tmp = #hb offr.dummy
+scoreboard players operation #hb2 offr.tmp -= #hb1 offr.tmp
+execute store result score #ok offr.tmp if score #hb2 offr.tmp matches 5..
+data modify storage offroader:st msg set value "bucla tick functioneaza (heartbeat avansat)"
+function offroader:selftest/check with storage offroader:st
+
 # urcăm la volan
 ride @s mount @e[type=minecraft:horse,tag=offr_veh,limit=1]
+execute store result score #ok offr.tmp if entity @e[type=minecraft:horse,tag=offr_veh,limit=1,nbt={Passengers:[{}]}]
+data modify storage offroader:st msg set value "jucatorul a urcat la volan (ride a functionat)"
+function offroader:selftest/check with storage offroader:st
 data modify storage offroader:st p set value "step3"
 schedule function offroader:selftest/step 10t

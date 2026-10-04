@@ -11,6 +11,9 @@ data modify storage offroader:st msg set value "viteza zero in parcare"
 function offroader:selftest/check with storage offroader:st
 
 function offroader:give
+execute store result score #ok offr.tmp if items entity @s contents minecraft:warped_fungus_on_a_stick
+data modify storage offroader:st msg set value "give a dat itemele (functia ruleaza)"
+function offroader:selftest/check with storage offroader:st
 execute store result score #ok offr.tmp if items entity @s contents minecraft:warped_fungus_on_a_stick[item_model="offroader:key"]
 data modify storage offroader:st msg set value "cheia primita si recunoscuta (item_model corect)"
 function offroader:selftest/check with storage offroader:st
