@@ -1,0 +1,37 @@
+name: conn-test
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/conn-test.txt']
+
+permissions:
+  contents: write
+
+jobs:
+  conn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Testează conectivitatea la serverul din sandbox
+        run: |
+          SBX="i3uhsl0jjfvfai5wrjfhq"
+          {
+            echo "=== $(date -u) SLP către serverul Minecraft din sandbox ==="
+            python3 deploy/slp.py \
+              "25565-$SBX.e2b.app:25565" \
+              "$SBX.e2b.app:25565" \
+              "25565-$SBX.e2b.app:443" \
+              "25565-$SBX.e2b.app:80" 2>&1
+          } | tee deploy-report/conn.txt
+
+      - name: Publică raportul
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          git add deploy-report/conn.txt || true
+          git commit -m "conn: raport test conectivitate [skip ci]" || echo "nimic"
+          git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null || true
+          git push || echo "push eșuat"
