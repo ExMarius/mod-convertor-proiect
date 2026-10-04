@@ -1,0 +1,84 @@
+name: release-server
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/release-server.txt']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Asamblează pachetul „server gata-făcut"
+        run: |
+          set -e
+          URL=$(curl -sfL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest" | jq -r '.downloads["server:default"].url')
+          mkdir -p pack/plugins pack/world/datapacks
+          curl -sfL -o pack/paper.jar "$URL"
+          cp plugin/release/OffroaderPlugin.jar pack/plugins/
+          cp offroader/release/OffroaderDatapack.zip pack/world/datapacks/
+          cp offroader/release/OffroaderResourcePack.zip pack/
+          echo "eula=true" > pack/eula.txt
+          cat > pack/server.properties <<'EOF'
+          server-port=25565
+          online-mode=false
+          enforce-secure-profile=false
+          level-type=minecraft\:normal
+          spawn-monsters=false
+          difficulty=peaceful
+          view-distance=8
+          simulation-distance=8
+          max-players=5
+          spawn-protection=0
+          motd=Offroader 1:1 — server de test
+          resource-pack=https://github.com/ExMarius/mod-convertor-proiect/raw/arena%2F01a106d2-mod-convertor-proiect/offroader/release/OffroaderResourcePack.zip
+          EOF
+          printf '@echo off\r\ntitle Offroader Server 1.21.4\r\nwhere java >nul 2>nul\r\nif errorlevel 1 (\r\n  echo JAVA LIPSESTE. Instaleaza Temurin 21 de pe https://adoptium.net (varianta MSI)\r\n  pause\r\n  exit /b 1\r\n)\r\necho Pornesc serverul... Prima data poate dura 1-2 minute.\r\njava -Xmx2G -jar paper.jar nogui\r\npause\r\n' > pack/start.bat
+          cat > pack/CITESTE-MA.txt <<'EOF'
+          ============================================================
+           OFFROADER SERVER 1.21.4 — GATA FACUT (test personal)
+          ============================================================
+
+          1) Daca nu ai Java 21+: instaleaza Temurin 21 de la
+             https://adoptium.net (butonul mare, varianta Windows x64 .msi,
+             bifat "Set JAVA_HOME" la instalare).
+
+          2) Dublu-click pe start.bat  (prima pornire dureaza 1-2 minute).
+
+          3) In TLauncher: Multiplayer -> Add Server -> adresa:  127.0.0.1
+
+          4) La conectare primesti AUTOMAT cheia, volanul si bidonul
+             (nu trebuie sa dai nicio comanda!).
+
+          5) Resource pack-ul se ofera singur la conectare — apasa "Yes".
+             (Daca refuzi: OffroaderResourcePack.zip din arhiva -> folderul
+              .minecraft/resourcepacks/ si selecteaza-l manual.)
+
+          6) Cheie (click-dreapta) = scoate masina. Urci pe scaunul din fata.
+             W/A/S/D = condus (ca in mod), mouse = doar camera, SPACE = saritura,
+             SHIFT = frana de mana, volan in mana + click-dreapta = BOOST,
+             bidon (click-dreapta langa masina) = alimentare.
+
+          7) Daca ceva nu merge: deschide logs/latest.txt (sau latest.log),
+             copiază TOT textul si lipeste-l in chat la agent.
+
+          Nota: serverul ruleaza pe calculatorul tau. Ca sa joci cu un prieten,
+          el se conecteaza la IP-ul tau (vezi ce show, ipconfig).
+          EOF
+          cd pack && zip -qr ../OffroaderServer.zip . && cd ..
+          ls -la OffroaderServer.zip
+
+      - name: Publică pe GitHub Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "server-v1" OffroaderServer.zip \
+            --target "$GITHUB_SHA" \
+            --title "Server Offroader gata-făcut (1.21.4)" \
+            --notes "Dezarhivează, dublu-click start.bat, intră din TLauncher pe 127.0.0.1. Necesită Java 21+ (adoptium.net). Vezi CITESTE-MA.txt din arhivă." \
+            || gh release upload "server-v1" OffroaderServer.zip --clobber
