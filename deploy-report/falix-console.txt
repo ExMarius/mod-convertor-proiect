@@ -1,46 +1,35 @@
-servere pe cont: 1
-  - Offroader-Test (id 3500167)
-
-stare: 200 {"object": "server_resources", "cpu": 1.0, "ram": 2560, "disk": 10000}
-
-=== ULTIMELE 120 LINII DIN CONSOLĂ (40 disponibile) ===
-[14:33:50] [Server thread/INFO]: ExMarius left the game
-[14:45:14] [Server thread/INFO]: Stopping the server
-[14:45:14] [Server thread/INFO]: Stopping server
-[14:45:14] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.11.3-SNAPSHOT
-[14:45:14] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
-[14:45:15] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
-[14:45:15] [WebSocketConnectReadThread-62/INFO]: [Geyser-Spigot] The skin uploader has been closed
-[14:45:15] [Server thread/INFO]: [OffroaderPlugin] Disabling OffroaderPlugin v2.2.0
-[14:45:15] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[14:45:15] [Server thread/INFO]: Saving players
-[14:45:15] [Server thread/INFO]: Saving worlds
-[14:45:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saved 27 block chunks, 218 entity chunks, 0 poi chunks in world 'world' in 0.20s
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[14:45:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[14:45:15] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 10 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[14:45:15] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[14:45:15] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[14:45:15] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[14:45:15] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[14:45:15] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[14:45:15] [Server thread/INFO]: Waiting for I/O tasks to complete...
-[14:45:15] [Server thread/INFO]: All I/O tasks to complete
-[14:45:15] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[14:45:15] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+=== 14:14:58 UPGRADE v2.0 (mod 1:1 ca plugin) ===
+server id=3500167
+cheia SSH e deja în cont
+  plugins/OffroaderPlugin.jar: 16428b OK
+  world/datapacks/OffroaderDatapack.zip: 34446b OK
+stare server: necunoscută
+power start → 403 (verification_required)
+LINK_VERIFICARE: https://falixnodes.net/s/2z2s4pvbsx3lz
+aștept verificarea utilizatorului (până la 50 min)...
+  poll 0: ?
+  poll 4: ?
+  poll 8: ?
+  poll 12: ?
+  poll 16: ?
+  poll 20: ?
+  poll 24: ?
+  poll 28: ?
+  poll 32: ?
+  poll 36: ?
+  poll 40: ?
+  poll 44: ?
+  poll 48: ?
+  poll 52: ?
+  poll 56: ?
+  poll 60: ?
+  poll 64: ?
+  poll 68: ?
+  poll 72: ?
+  poll 76: ?
+  poll 80: ?
+  poll 84: ?
+  poll 88: ?
+  poll 92: ?
+  poll 96: ?
+=== OPRIT: 50 min fără verificare (fișierele sunt totuși urcate) ===
