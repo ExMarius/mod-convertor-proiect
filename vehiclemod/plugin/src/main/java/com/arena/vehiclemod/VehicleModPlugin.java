@@ -335,9 +335,7 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
 
         // --- numele ---
         v.name = w.spawn(spawn, TextDisplay.class, d -> {
-            d.setText(net.kyori.adventure.text.Component.text(def.name())
-                    .color(net.kyori.adventure.text.format.NamedTextColor.GOLD).decoration(
-                            net.kyori.adventure.text.format.TextDecoration.BOLD, true));
+            d.setText("§6" + def.name());
             d.setBillboard(org.bukkit.entity.Display.Billboard.CENTER);
             d.setTeleportDuration(2);
             tag(d, uid);
@@ -396,7 +394,6 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
     private void tag(Entity e, String uid) {
         e.addScoreboardTag("vm_f");
         e.getPersistentDataContainer().set(vehicleKey, PersistentDataType.STRING, uid);
-        e.setViewRange(1.6f);
     }
 
     private int countFollowers(Horse h) {
@@ -515,8 +512,8 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
         double[] accel = {fwd[0] * force * ACCEL, fwd[1] * force * ACCEL};
         if (speed < 0.05) { v.vx = 0; v.vz = 0; speed = 0; }
 
-        float surfFriction = surfaceFriction(horse, fwd, frontAxle, rearAxle);
-        float surfTraction = surfaceTraction(horse, fwd, frontAxle, rearAxle);
+        float surfFriction = surfaceFriction(horse.getLocation(), fwd, frontAxle, rearAxle);
+        float surfTraction = surfaceTraction(horse.getLocation(), fwd, frontAxle, rearAxle);
 
         double[] hb = {v.vx * (handbrake && v.grounded ? BRAKE : 0) * ACCEL,
                        v.vz * (handbrake && v.grounded ? BRAKE : 0) * ACCEL};
@@ -782,7 +779,7 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
             p.sendMessage("§6[VehicleMod] §aLa volan! §7W/S = gază · A/D = volan · SPAȚIU = frână de mână · SHIFT = cobori · click-dreapta = BOOST");
         } else {
             // scaun de pasager: găsește stand-ul de la aceeași poziție
-            for (ArmorStand st : h.getWorld().getByClass(ArmorStand.class)) {
+            for (ArmorStand st : h.getWorld().getEntitiesByClass(ArmorStand.class)) {
                 if (!st.getScoreboardTags().contains("vm_seat")) continue;
                 if (uid.equals(st.getPersistentDataContainer().get(vehicleKey, PersistentDataType.STRING))
                         && st.getLocation().distanceSquared(hit.getLocation()) < 1.2) {
@@ -808,11 +805,11 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
             if (fuel > 0) {
                 v.boost = BOOST_TICKS;
                 play(h.getLocation(), "vehicle:boost_pad", 1.4f, 1f);
-                p.sendActionBar(net.kyori.adventure.text.Component.text("BOOST!")
-                        .color(net.kyori.adventure.text.format.NamedTextColor.DARK_RED).bold(true));
+                p.sendActionBar(net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+                        .legacySection().deserialize("§4§lBOOST!"));
             } else {
-                p.sendActionBar(net.kyori.adventure.text.Component.text("Fără combustibil! Alimentează cu bidonul.")
-                        .color(net.kyori.adventure.text.format.NamedTextColor.RED));
+                p.sendActionBar(net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+                        .legacySection().deserialize("§cFără combustibil! Alimentează cu bidonul."));
             }
             return;
         }
