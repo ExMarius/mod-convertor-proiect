@@ -1,35 +1,18 @@
-=== 09:58:50 UPGRADE v2.0 (mod 1:1 ca plugin) ===
+=== 13:57:52 UPGRADE v2.0 (mod 1:1 ca plugin) ===
 server id=3500167
 cheia SSH e deja în cont
-  plugins/OffroaderPlugin.jar: 16221b OK
-  world/datapacks/OffroaderDatapack.zip: 34446b OK
-stare server: necunoscută
-power start → 403 (verification_required)
-LINK_VERIFICARE: https://falixnodes.net/s/2z2s4pvbsx3lz
-aștept verificarea utilizatorului (până la 50 min)...
-  poll 0: ?
-  poll 4: ?
-  poll 8: ?
-  poll 12: ?
-  poll 16: ?
-  poll 20: ?
-  poll 24: ?
-  poll 28: ?
-  poll 32: ?
-  poll 36: ?
-  poll 40: ?
-  poll 44: ?
-  poll 48: ?
-  poll 52: ?
-  poll 56: ?
-  poll 60: ?
-  poll 64: ?
-  poll 68: ?
-  poll 72: ?
-  poll 76: ?
-  poll 80: ?
-  poll 84: ?
-  poll 88: ?
-  poll 92: ?
-  poll 96: ?
-=== OPRIT: 50 min fără verificare (fișierele sunt totuși urcate) ===
+Traceback (most recent call last):
+  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/falix_upgrade.py", line 93, in <module>
+    c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
+  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 477, in connect
+    self._auth(
+  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 779, in _auth
+    raise saved_exception
+  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 696, in _auth
+    self._transport.auth_publickey(username, key)
+  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/transport.py", line 1600, in auth_publickey
+    return self.auth_handler.wait_for_response(my_event)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/auth_handler.py", line 227, in wait_for_response
+    raise e
+paramiko.ssh_exception.AuthenticationException: Authentication failed.
