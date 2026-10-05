@@ -1,35 +1,42 @@
-=== 00:47:19 UPGRADE v2.0 (mod 1:1 ca plugin) ===
-server id=3500167
-cheia SSH e deja în cont
-  plugins/OffroaderPlugin.jar: 15815b OK
-  world/datapacks/OffroaderDatapack.zip: 34336b OK
-stare server: necunoscută
-power start → 403 (verification_required)
-LINK_VERIFICARE: https://falixnodes.net/s/2z2s4pvbsx3lz
-aștept verificarea utilizatorului (până la 50 min)...
-  poll 0: ?
-  poll 4: ?
-  poll 8: ?
-  poll 12: ?
-  poll 16: ?
-  poll 20: ?
-  poll 24: ?
-  poll 28: ?
-  poll 32: ?
-  poll 36: ?
-  poll 40: ?
-  poll 44: ?
-  poll 48: ?
-  poll 52: ?
-  poll 56: ?
-  poll 60: ?
-  poll 64: ?
-  poll 68: ?
-  poll 72: ?
-  poll 76: ?
-  poll 80: ?
-  poll 84: ?
-  poll 88: ?
-  poll 92: ?
-  poll 96: ?
-=== OPRIT: 50 min fără verificare (fișierele sunt totuși urcate) ===
+servere pe cont: 1
+  - Offroader-Test (id 3500167)
+
+stare: 200 {"object": "server_resources", "cpu": 1.0, "ram": 2560, "disk": 10000}
+
+=== ULTIMELE 120 LINII DIN CONSOLĂ (36 disponibile) ===
+[09:41:02] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] masina s-a depozitat (cal + piese eliminate)
+[09:41:02] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] give a dat itemele (functia ruleaza)
+[09:41:02] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] cheia primita si recunoscuta (item_model corect)
+[09:41:02] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] volanul primit si recunoscut
+[09:41:02] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] bidonul primit si recunoscut
+[09:41:03] [Server thread/INFO]: ExMarius fell out of the world
+[09:41:03] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] urmasii orfani curatati automat
+[09:41:08] [Server thread/INFO]: ExMarius issued server command: /function offroader:selftest
+[09:41:08] [Server thread/INFO]: [ExMarius: Running function offroader:selftest]
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] vehiculul s-a invocat (calul invizibil exista)
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] 14 entitati-urmaritor: caroserie + volan + 4 roti + nume + 3 scaune + 4 hitbox-uri
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] rezervor plin la spawn (fuel=600)
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] functia tick exista si ruleaza chemata direct
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] toti urmaritorii s-au asezat langa vehicul (teleport relativ)
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] calul (motorul) e invizibil prin efect
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] bucla tick functioneaza (heartbeat avansat)
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] jucatorul sta la volan (RootVehicle pe jucator)
+[09:41:08] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] calul are jucator ca pasager (on passengers)
+[09:41:09] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] motorul a pornit (calul primeste comenzi WASD)
+[09:41:09] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] viteza de croaziera aplicata (0.3375)
+[09:41:09] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] starea 'condus' activa
+[09:41:09] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] boost activat (3 secunde de viteza)
+[09:41:09] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] viteza de boost aplicata (0.55)
+[09:41:10] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] rotile se invart odata cu miscarea
+[09:41:10] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] caroseria si rotile au urmat masina dupa miscare
+[09:41:10] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] alimentarea adauga +120 combustibil (300 -> 420)
+[09:41:10] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] claxonul porneste (cooldown activ)
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] oprit si parcat (nu mai pleaca singur)
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] viteza zero in parcare
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] masina s-a depozitat (cal + piese eliminate)
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] give a dat itemele (functia ruleaza)
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST OK] cheia primita si recunoscuta (item_model corect)
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] volanul primit si recunoscut
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] bidonul primit si recunoscut
+[09:41:11] [Server thread/INFO]: ExMarius fell out of the world
+[09:41:11] [Server thread/INFO]: [Not Secure] [ExMarius] [TEST ESEC] urmasii orfani curatati automat
