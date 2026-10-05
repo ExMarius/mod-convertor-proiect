@@ -1,46 +1,37 @@
-servere pe cont: 1
-  - Offroader-Test (id 3500167)
-
-stare: 200 {"object": "server_resources", "cpu": 1.0, "ram": 2560, "disk": 10000}
-
-=== ULTIMELE 120 LINII DIN CONSOLĂ (40 disponibile) ===
-[16:16:35] [Server thread/INFO]: ExMarius left the game
-[16:27:53] [Server thread/INFO]: Stopping the server
-[16:27:53] [Server thread/INFO]: Stopping server
-[16:27:53] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.11.3-SNAPSHOT
-[16:27:53] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
-[16:27:53] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
-[16:27:53] [WebSocketConnectReadThread-64/INFO]: [Geyser-Spigot] The skin uploader has been closed
-[16:27:53] [Server thread/INFO]: [OffroaderPlugin] Disabling OffroaderPlugin v2.2.1
-[16:27:53] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[16:27:53] [Server thread/INFO]: Saving players
-[16:27:53] [Server thread/INFO]: Saving worlds
-[16:27:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[16:27:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[16:27:53] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[16:27:53] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Saved 34 block chunks, 148 entity chunks, 0 poi chunks in world 'world' in 0.51s
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
-[16:27:54] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
-[16:27:54] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 10 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
-[16:27:54] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
-[16:27:54] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[16:27:54] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[16:27:54] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[16:27:54] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[16:27:54] [Server thread/INFO]: Waiting for I/O tasks to complete...
-[16:27:54] [Server thread/INFO]: All I/O tasks to complete
-[16:27:54] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[16:27:54] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+=== 17:42:09 DEPLOY VEHICLEMOD 1:1 (tot modul) ===
+server id=3500167
+cheia SSH e deja în cont
+stare server: running
+SFTP conectat: eu11-free.falixserver.net:3928
+  șters vechi: plugins/OffroaderPlugin.jar
+  șters vechi: world/datapacks/OffroaderDatapack.zip
+  plugins/VehicleMod.jar: 35720b OK
+--- linii importante din consolă ---
+  [17:42:23] [Server thread/INFO]: [VehicleMod] Enabling VehicleMod v3.0.0
+  [17:42:23] [Server thread/INFO]: [VehicleMod] VehicleMod activ — 19 vehicule din mod, 10 drivabile acum.
+  [17:42:33] [Server thread/INFO]: [Geyser-Spigot] Done (9.096s)! Run /geyser help for help!
+  [17:42:33] [Server thread/INFO]: CONSOLE: Reload complete.
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] dirt_bike — 6/6 piese, motor 16.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] dirt_bike: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] go_kart — 7/7 piese, motor 18.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] go_kart: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] golf_cart — 13/13 piese, motor 25.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] golf_cart: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] lawn_mower — 7/7 piese, motor 8.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] lawn_mower: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] mini_bus — 15/15 piese, motor 14.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] mini_bus: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] moped — 4/4 piese, motor 12.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] moped: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] off_roader — 13/13 piese, motor 16.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] off_roader: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] quad_bike — 9/9 piese, motor 16.0
+  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] quad_bike: piese rămase după store: 0
+  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] sports_car — 9/9 piese, motor 20.0
+  [17:42:35] [Server thread/WARN]: [VehicleMod] [TEST ESEC] sports_car: piese rămase după store: 0
+  [17:42:35] [Server thread/INFO]: [VehicleMod] [TEST OK] tractor — 7/7 piese, motor 8.0
+  [17:42:35] [Server thread/WARN]: [VehicleMod] [TEST ESEC] tractor: piese rămase după store: 0
+  [17:42:35] [Server thread/INFO]: [VehicleMod] [VehicleMod TEST] FINAL: 10 trecute, 10 esuate
+  [17:42:35] [Server thread/INFO]: [VehicleMod TEST] 10 trecute, 10 esuate — vezi consola.
+  [17:43:19] [Server thread/INFO]: VehicleMod version 3.0.0
+=== DEPLOY VEHICLEMOD FINALIZAT ===
