@@ -1,0 +1,37 @@
+name: falix-console
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/falix-console.txt']
+
+permissions:
+  contents: write
+
+jobs:
+  console:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stare + consola
+        env:
+          PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
+        run: |
+          pip install -q paramiko
+          FALIX_TOKEN=$(openssl enc -d -aes-256-cbc -pbkdf2 -base64 -k "$PTERO_TOKEN" -in deploy/falix_token.enc)
+          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_console.py 2>&1 | tee deploy-report/falix-console.txt
+
+      - name: Publică raportul
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          git add deploy-report/falix-console.txt
+          git commit -m "consola: raport [skip ci]" || echo "nimic"
+          for i in 1 2 3 4; do
+            git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null && git push -q && echo publicat && exit 0
+            sleep 8
+          done
+          echo "push eșuat"
