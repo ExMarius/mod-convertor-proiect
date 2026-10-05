@@ -21,7 +21,7 @@ jobs:
         run: |
           pip install -q paramiko
           FALIX_TOKEN=$(openssl enc -d -aes-256-cbc -pbkdf2 -base64 -k "$PTERO_TOKEN" -in deploy/falix_token.enc)
-          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_console.py 2>&1 | tee deploy-report/falix-console.txt
+          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_clean.py 2>&1 | tee deploy-report/falix-console.txt
 
       - name: Publică raportul
         if: always()
