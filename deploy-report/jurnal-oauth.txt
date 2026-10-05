@@ -485,3 +485,21 @@ LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
 Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
 apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
 și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_nw0Gf8NFcLGTKYN3H2LqssAxGldJMrEaCozzOVR2","client_id_issued_at":1791194226,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
