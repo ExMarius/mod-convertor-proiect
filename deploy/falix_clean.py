@@ -60,8 +60,12 @@ state = ((r.get("data") or {}).get("current_state") or "").lower()
 log(f"=== {time.strftime('%H:%M:%S')} CURĂȚENIE (stare: {state or '?'}) ===")
 
 if state not in ("running", "started"):
-    log("serverul nu rulează — nimic de curățat acum.")
-    raise SystemExit(0)
+    t = get_log()
+    if "joined the game" in t or ("Done (" in t and "Stopping" not in t.split("Done (")[-1]):
+        state = "running"
+    else:
+        log("serverul nu rulează — nimic de curățat acum.")
+        raise SystemExit(0)
 
 # numără entitățile problematice
 send("execute if entity @e[type=horse,tag=offr_veh] run say CAI_OFFROADER: există")

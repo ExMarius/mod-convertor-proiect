@@ -100,6 +100,10 @@ if state not in ("running", "started"):
             time.sleep(30)
             code, r = api("GET", f"/servers/{SID}/resources")
             st = ((r.get("data") or {}).get("current_state") or "").lower()
+            if st not in ("running", "started"):
+                t = get_log()
+                if "joined the game" in t or ("Done (" in t and "Stopping" not in t.split("Done (")[-1]):
+                    st = "running"
             if i % 4 == 0: log(f"  poll {i}: {st or '?'}")
             if st in ("running", "started"):
                 started = True; break
@@ -144,6 +148,17 @@ ok = sftp.stat("plugins/VehicleMod.jar").st_size == os.path.getsize("vehiclemod/
 log(f"  plugins/VehicleMod.jar: {sftp.stat('plugins/VehicleMod.jar').st_size}b {'OK' if ok else 'GRESIT!'}")
 if not ok: sys.exit(1)
 sftp.close(); c.close()
+
+# --- curățenie: cai-zombie din testele vechi (lagau serverul 1457 ticks!) ---
+send("kill @e[type=horse,tag=offr_veh]")
+time.sleep(3)
+send("kill @e[tag=offr_f]")
+time.sleep(3)
+send("kill @e[type=horse,tag=vm_veh]")
+time.sleep(2)
+send("kill @e[tag=vm_f]")
+time.sleep(5)
+log("curățenie zombie trimisă")
 
 # --- reload (plugin + tot) și testul complet din consolă ---
 send("reload confirm")
