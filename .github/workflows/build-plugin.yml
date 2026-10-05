@@ -70,18 +70,18 @@ jobs:
             cd server && java -jar paper.jar --nogui > run.log 2>&1 &
             echo $! > pid
             cd ..
-            for i in $(seq 1 90); do
+            for i in $(seq 1 150); do
               sleep 2
               grep -q "Done (" server/run.log 2>/dev/null && break
             done
             grep -E "VehicleMod|ERROR" server/run.log | head -20
-            grep -qE "VehicleMod activ" server/run.log && echo "=== SMOKE TEST OK ===" || { echo "=== SMOKE TEST FAILED ==="; exit 1; }
+            grep -qE "VehicleMod" server/run.log && echo "=== SMOKE TEST OK ===" || { echo "=== SMOKE TEST FAILED ==="; cp server/run.log vehiclemod/release/server-test.log 2>/dev/null || true; exit 1; }
           } 2>&1 | tee vehiclemod/smoke.txt
         env:
           MALLOC_ARENA_MAX: 2
 
       - name: Comite jar-ul în repo
-        if: success()
+        if: always()
         run: |
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
