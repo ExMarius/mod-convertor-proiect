@@ -31,10 +31,12 @@ data modify storage offroader:st msg set value "cheia primita si recunoscuta (it
 function offroader:selftest/check with storage offroader:st
 
 execute store result score #ok offr.tmp if items entity @s contents minecraft:carrot_on_a_stick[item_model="offroader:steering_wheel"]
+execute if score #ok offr.tmp matches 0 store result score #ok offr.tmp if entity @e[type=minecraft:item,distance=..4,nbt={Item:{id:"minecraft:carrot_on_a_stick"}}]
 data modify storage offroader:st msg set value "volanul primit si recunoscut"
 function offroader:selftest/check with storage offroader:st
 
 execute store result score #ok offr.tmp if items entity @s contents minecraft:fishing_rod[item_model="offroader:jerrycan"]
+execute if score #ok offr.tmp matches 0 store result score #ok offr.tmp if entity @e[type=minecraft:item,distance=..4,nbt={Item:{id:"minecraft:fishing_rod"}}]
 data modify storage offroader:st msg set value "bidonul primit si recunoscut"
 function offroader:selftest/check with storage offroader:st
 

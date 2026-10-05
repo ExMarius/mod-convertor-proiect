@@ -1,12 +1,13 @@
 package com.arena.offroader;
 
-import io.papermc.paper.entity.TeleportFlag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.SoundCategory;
 import org.bukkit.World;
+import org.bukkit.attribute.Attributable;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -88,8 +89,6 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
     private static final float PITCH_MIN = 0.8f, PITCH_MAX = 1.6f;         // off_roader.json
     private static final int FUEL_MAX_QUARTER = 100000;  // 25000 × 4 (scorul e în sferturi)
     private static final int ENGINE_LOOP_TICKS = 19;     // engine.ogg = 1.0s
-    // hitbox din ModEntities: OFF_ROADER = 2.0F × 1.0F; step ca în mod
-    private static final double VEH_WIDTH = 2.0, VEH_HEIGHT = 1.0, STEP_HEIGHT = 1.0, EPS = 1.0E-7;
 
     /** stare per vehicul (unități mod) */
     private static final class Veh {
@@ -115,7 +114,7 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        getLogger().info("OffroaderPlugin v2.1 activ — port complet 1:1 din Vehicle Mod (fizică + sunete + combustibil).");
+        getLogger().info("OffroaderPlugin v2.2 activ — 1:1 din Vehicle Mod: fizică + velocitate (fără teleport) + sunete + combustibil.");
         Bukkit.getPluginManager().registerEvents(this, this);
         setPluginFlag(1);
         Bukkit.getScheduler().runTaskTimer(this, this::tick, 1L, 1L);
@@ -163,9 +162,10 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
         if (!pdc.has(initKey, PersistentDataType.BYTE)) {
             pdc.set(initKey, PersistentDataType.BYTE, (byte) 1);
             setScore(horse, "offr.fuel", FUEL_MAX_QUARTER);
-            horse.setAI(false);                 // NoAI mereu — pluginul mută calul prin teleport
-            horse.setInvulnerable(true);
+            horse.setAI(false);                 // parcat = NoAI; la urcarea șoferului AI pornit
         }
+
+        v.grounded = horse.isOnGround();   // starea de la tick-ul precedent al calului
 
         Player driver = null;
         for (Entity p : horse.getPassengers()) if (p instanceof Player pl) { driver = pl; break; }
@@ -305,29 +305,39 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
             v.vz += (tZ - v.vz) * surfaceTraction;
         }
 
-        // ---- gravitația + coliziuni + aplicare prin teleport (ca Entity.move din mod) ----
+        // ---- gravitația + aplicare prin VELOCITATE (ca move(MoverType.SELF,...) din mod) ----
+        // NICIODATĂ teleport cu pasager (desincronizează clientul = „cazi din mapă").
+        // Calul cu AI pornit face el coliziunile + step-up 1.0 (vanilla: calul are maxUpStep 1.0,
+        // identic cu PoweredVehicleEntity.maxUpStep = 1.0 din mod).
         v.dy -= GRAVITY;
+        double moveX = v.dx + mx, moveY = v.dy, moveZ = v.dz + mz;
 
-        Location hloc = horse.getLocation();
-        double[] mv = collideMove(horse.getWorld(), hloc, mx, v.dy, mz, v.grounded);
-        boolean onGround = mv[3] >= 1.0;
-
-        boolean needMove = Math.abs(mv[0]) + Math.abs(mv[1]) + Math.abs(mv[2]) > 1e-9
-                || Math.abs(dYaw) > 1e-4 || !v.grounded;
-        if (needMove) {
-            // teleport CU pasageri → clientul interpolează (echivalentul
-            // updateInterval=1 + velocityUpdates din ModEntities)
-            Location target = new Location(horse.getWorld(),
-                    hloc.getX() + mv[0], hloc.getY() + mv[1], hloc.getZ() + mv[2], newYaw, 0f);
-            horse.teleport(target, TeleportFlag.EntityState.RETAIN_PASSENGERS);
-        }
-        v.grounded = onGround;
-
-        if (driver == null) {                          // parcat: fără inerție reziduală
-            v.dx = 0; v.dz = 0;
+        if (driver != null) {
+            horse.setAI(true);                        // fizică vie (gravitație/coliziuni/step)
+            var inv = horse.getInventory();
+            if (inv.getSaddle() != null) inv.setSaddle(null);  // pluginul = singurul șofer
+            // atributele de mișcare (compatibil cu testul vechi; AI-ul nu umblă singur)
+            double attr = boosting ? 0.55 : 0.3375;
+            var speedAttr = horse.getAttribute(Attribute.MOVEMENT_SPEED);
+            if (speedAttr != null && Math.abs(speedAttr.getBaseValue() - attr) > 1e-6)
+                speedAttr.setBaseValue(attr);
+            setScore(horse, "offr.wasdriven", 1);
+        } else {
+            horse.setAI(false);                       // parcat: nemișcat
+            var speedAttr = horse.getAttribute(Attribute.MOVEMENT_SPEED);
+            if (speedAttr != null && speedAttr.getBaseValue() != 0.0)
+                speedAttr.setBaseValue(0.0);
+            setScore(horse, "offr.wasdriven", 0);
+            v.dx = 0; v.dy = 0; v.dz = 0;
             if (Math.abs(v.vx) + Math.abs(v.vz) < 0.05) { v.vx = 0; v.vz = 0; }
         }
-        if (onGround) {                                // mod: sol → delta ×(0.75, 0, 0.75)
+
+        // calul își adaugă singur −0.08 gravitație în tick-ul lui → compensăm
+        Vector out = new Vector(moveX, moveY + GRAVITY, moveZ);
+        horse.setVelocity(out);
+        horse.setRotation(newYaw, 0f);
+
+        if (horse.isOnGround()) {                      // mod: sol → delta ×(0.75, 0, 0.75)
             v.dx *= 0.75; v.dy = 0; v.dz *= 0.75;
         } else {                                       // aer → ×(0.98, 1, 0.98)
             v.dx *= 0.98; v.dz *= 0.98;
@@ -358,76 +368,6 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
             else if (sliding || (handbrake && speed > 2)) sb.append("  §d§lDRIFT");
             actionbar(driver, sb.toString());
         }
-    }
-
-    // ------------------------------------------------ coliziuni (Entity.move din mod: 2.0×1.0, step 1.0)
-
-    /** decupează mișcarea pe o axă contra box-urilor solide (algoritmul vanilla) */
-    private static double clipAxis(java.util.List<BoundingBox> solids, BoundingBox self, double d, char axis) {
-        for (BoundingBox b : solids) {
-            boolean yOv = self.getMaxY() > b.getMinY() + EPS && self.getMinY() < b.getMaxY() - EPS;
-            boolean zOv = self.getMaxZ() > b.getMinZ() + EPS && self.getMinZ() < b.getMaxZ() - EPS;
-            boolean xOv = self.getMaxX() > b.getMinX() + EPS && self.getMinX() < b.getMaxX() - EPS;
-            if (axis == 'x' && yOv && zOv) {
-                if (d > 0 && self.getMaxX() <= b.getMinX() + EPS) d = Math.min(d, b.getMinX() - self.getMaxX());
-                else if (d < 0 && self.getMinX() >= b.getMaxX() - EPS) d = Math.max(d, b.getMaxX() - self.getMinX());
-            } else if (axis == 'y' && xOv && zOv) {
-                if (d > 0 && self.getMaxY() <= b.getMinY() + EPS) d = Math.min(d, b.getMinY() - self.getMaxY());
-                else if (d < 0 && self.getMinY() >= b.getMaxY() - EPS) d = Math.max(d, b.getMaxY() - self.getMinY());
-            } else if (axis == 'z' && xOv && yOv) {
-                if (d > 0 && self.getMaxZ() <= b.getMinZ() + EPS) d = Math.min(d, b.getMinZ() - self.getMaxZ());
-                else if (d < 0 && self.getMinZ() >= b.getMaxZ() - EPS) d = Math.max(d, b.getMaxZ() - self.getMinZ());
-            }
-        }
-        return d;
-    }
-
-    /** toate box-urile de coliziune din zona măturată de mișcare */
-    private static java.util.List<BoundingBox> solidsNear(World w, double x0, double y0, double z0,
-                                                          double x1, double y1, double z1) {
-        java.util.List<BoundingBox> out = new ArrayList<>();
-        int bx0 = (int) Math.floor(Math.min(x0, x1)) - 1, bx1 = (int) Math.floor(Math.max(x0, x1)) + 1;
-        int by0 = (int) Math.floor(Math.min(y0, y1)) - 2, by1 = (int) Math.floor(Math.max(y0, y1)) + 2;
-        int bz0 = (int) Math.floor(Math.min(z0, z1)) - 1, bz1 = (int) Math.floor(Math.max(z0, z1)) + 1;
-        for (int x = bx0; x <= bx1; x++)
-            for (int y = by0; y <= by1; y++)
-                for (int z = bz0; z <= bz1; z++) {
-                    Block blk = w.getBlockAt(x, y, z);
-                    if (blk.isEmpty() || blk.isLiquid()) continue;
-                    for (BoundingBox cb : blk.getCollisionShape().getBoundingBoxes())
-                        if (cb.getWidthX() > 0 && cb.getHeight() > 0 && cb.getWidthZ() > 0) out.add(cb);
-                }
-        return out;
-    }
-
-    /** mișcare cu coliziuni per-axă + step-up 1.0 → {dx, dy, dz, grounded} */
-    private double[] collideMove(World w, Location loc, double mx, double my, double mz, boolean wasGround) {
-        double x = loc.getX(), y = loc.getY(), z = loc.getZ();
-        java.util.List<BoundingBox> solids = solidsNear(w, x, y, z, x + mx, y + Math.min(my, -STEP_HEIGHT), z + mz);
-
-        BoundingBox box = new BoundingBox(x - VEH_WIDTH / 2, y, z - VEH_WIDTH / 2,
-                x + VEH_WIDTH / 2, y + VEH_HEIGHT, z + VEH_WIDTH / 2);
-
-        // traiectul normal: Y, X, Z (ordinea din Entity.collide)
-        double dy = clipAxis(solids, box, my, 'y');
-        BoundingBox b1 = box.clone().shift(new Vector(0, dy, 0));
-        double dx = clipAxis(solids, b1, mx, 'x');
-        b1 = b1.clone().shift(new Vector(dx, 0, 0));
-        double dz = clipAxis(solids, b1, mz, 'z');
-        boolean grounded = my < 0 && dy != my;
-
-        // step-up (maxUpStep = 1.0 exact ca în mod): ridică, orizontal, coboară pe treaptă
-        if ((Math.abs(dx - mx) > 1e-6 || Math.abs(dz - mz) > 1e-6) && (wasGround || grounded)) {
-            BoundingBox up = box.clone().shift(new Vector(0, STEP_HEIGHT, 0));
-            double sdx = clipAxis(solids, up, mx, 'x');
-            up = up.clone().shift(new Vector(sdx, 0, 0));
-            double sdz = clipAxis(solids, up, mz, 'z');
-            BoundingBox down = up.clone().shift(new Vector(0, 0, sdz));
-            double sdy = clipAxis(solids, down, -STEP_HEIGHT, 'y');
-            if (sdx * sdx + sdz * sdz > dx * dx + dz * dz + 1e-9)
-                return new double[]{sdx, STEP_HEIGHT + sdy, sdz, 1.0};
-        }
-        return new double[]{dx, dy, dz, grounded ? 1.0 : 0.0};
     }
 
     // ------------------------------------------------------------------ suprafețe (SurfaceHelper + WheelType.STANDARD)

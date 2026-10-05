@@ -11,8 +11,9 @@ execute store result score #ok offr.tmp if score #cnt offr.tmp matches 14
 data modify storage offroader:st msg set value "14 entitati-urmaritor: caroserie + volan + 4 roti + nume + 3 scaune + 4 hitbox-uri"
 function offroader:selftest/check with storage offroader:st
 
-execute store result score #ok offr.tmp if score @e[type=minecraft:horse,tag=offr_veh,limit=1] offr.fuel matches 600
-data modify storage offroader:st msg set value "rezervor plin la spawn (fuel=600)"
+execute if score #plugin offr.dummy matches 1 store result score #ok offr.tmp if score @e[type=minecraft:horse,tag=offr_veh,limit=1] offr.fuel matches 100000
+execute unless score #plugin offr.dummy matches 1 store result score #ok offr.tmp if score @e[type=minecraft:horse,tag=offr_veh,limit=1] offr.fuel matches 600
+data modify storage offroader:st msg set value "rezervor plin la spawn (plugin: 25000, vanilla: 600)"
 function offroader:selftest/check with storage offroader:st
 
 # chemăm tick-ul DIRECT: dacă funcția e compilată, #hb sare la 1+
