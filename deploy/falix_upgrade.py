@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""Upgrade Falix: SFTP plugin+datapack → (start dacă e nevoie, cu așteptare
-verificare) → reload confirm → selftest cu rezultate în consolă."""
+"""Deploy VehicleMod (port 1:1) pe Falix: SFTP upload + curățare vechi + reload + test consolă."""
 import os, sys, json, time
 import urllib.request, urllib.parse, urllib.error
 
@@ -26,9 +25,8 @@ def api(method, path, body=None, timeout=120):
                 try: return r.status, json.loads(txt)
                 except Exception: return r.status, {"raw": txt}
         except urllib.error.HTTPError as e:
-            txt = e.read().decode("utf-8", "ignore")
-            try: rr = json.loads(txt)
-            except Exception: rr = {"raw": txt}
+            try: rr = json.loads(e.read().decode("utf-8", "ignore"))
+            except Exception: rr = {}
             if e.code in (503, 429, 502) and attempt < 4:
                 time.sleep(15 * (attempt + 1)); continue
             return e.code, rr
@@ -52,14 +50,7 @@ def get_log():
 def send(cmd):
     return api("POST", f"/servers/{SID}/commands", body={"command": cmd})
 
-def wait_done(minutes=7):
-    for _ in range(minutes * 6):
-        time.sleep(10)
-        if "Done (" in get_log():
-            return True
-    return False
-
-log(f"=== {time.strftime('%H:%M:%S')} UPGRADE v2.0 (mod 1:1 ca plugin) ===")
+log(f"=== {time.strftime('%H:%M:%S')} DEPLOY VEHICLEMOD 1:1 (tot modul) ===")
 code, r = api("GET", "/servers?limit=100")
 SID = next((s["id"] for s in (r.get("data", []) if code == 200 else [])
             if "offroader" in str(s.get("name", "")).lower()), None)
@@ -84,7 +75,7 @@ if not have:
 else:
     log("cheia SSH e deja în cont")
 
-# --- SFTP: plugin + datapack (merge și cu serverul oprit) ---
+# --- SFTP ---
 code, r = api("GET", f"/servers/{SID}/sftp")
 d = (r.get("data", {}) or {})
 HOST, PORT, USER = d.get("hostname"), int(d.get("port") or 22), d.get("username")
@@ -93,17 +84,34 @@ c = paramiko.SSHClient(); c.set_missing_host_key_policy(paramiko.AutoAddPolicy()
 c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
           timeout=30, allow_agent=False, look_for_keys=False)
 sftp = c.open_sftp()
-for remote, local in [("plugins/OffroaderPlugin.jar", "plugin/release/OffroaderPlugin.jar"),
-                      ("world/datapacks/OffroaderDatapack.zip", "offroader/release/OffroaderDatapack.zip")]:
-    sftp.put(local, remote)
-    ok = sftp.stat(remote).st_size == os.path.getsize(local)
-    log(f"  {remote}: {sftp.stat(remote).st_size}b {'OK' if ok else 'GRESIT!'}")
-    if not ok: sys.exit(1)
+
+# curăță vechiul sistem (plugin offroader + datapack)
+for old in ["plugins/OffroaderPlugin.jar", "world/datapacks/OffroaderDatapack.zip"]:
+    try:
+        sftp.remove(old); log(f"  șters vechi: {old}")
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        log(f"  {old}: {e}")
+
+# urcă noul plugin
+sftp.put("vehiclemod/release/VehicleMod.jar", "plugins/VehicleMod.jar")
+ok = sftp.stat("plugins/VehicleMod.jar").st_size == os.path.getsize("vehiclemod/release/VehicleMod.jar")
+log(f"  plugins/VehicleMod.jar: {sftp.stat('plugins/VehicleMod.jar').st_size}b {'OK' if ok else 'GRESIT!'}")
+if not ok: sys.exit(1)
 sftp.close(); c.close()
 
-# --- asigură serverul pornit (așteaptă verificarea până la 50 min) ---
-code, r = api("GET", f"/servers/{SID}/resources")
-state = ((r.get("data") or {}).get("current_state") or "").lower()
+# --- pornire dacă e nevoie (așteaptă verificarea până la 50 min) ---
+state = ""
+for _ in range(4):
+    code, r = api("GET", f"/servers/{SID}/resources")
+    state = ((r.get("data") or {}).get("current_state") or "").lower()
+    if state in ("running", "started"):
+        break
+    t = get_log()
+    if "Done (" in t and "Stopping" not in t.split("Done (")[-1]:
+        state = "running"; break
+    time.sleep(6)
 log(f"stare server: {state or 'necunoscută'}")
 if state not in ("running", "started"):
     code, r = api("POST", f"/servers/{SID}/power", body={"signal": "start"})
@@ -122,29 +130,26 @@ if state not in ("running", "started"):
             if st in ("running", "started"):
                 started = True; break
         if not started:
-            log("=== OPRIT: 50 min fără verificare (fișierele sunt totuși urcate) ===")
+            log("=== OPRIT: 50 min fără verificare (fișierele sunt urcate) ===")
             sys.exit(1)
     log("aștept „Done”...")
-    if not wait_done():
-        log("AVERTISMENT: „Done” nu a apărut în 7 min — continui oricum")
+    for _ in range(42):
+        time.sleep(10)
+        if "Done (" in get_log():
+            log("serverul e SUS"); break
 
-# --- reload (reîncarcă pluginul ȘI datapack-ul, fără restart) ---
+# --- reload (plugin + tot) și testul complet din consolă ---
 send("reload confirm")
-time.sleep(15)
-
-# --- selftest ---
-send("execute as ExMarius at @s run function offroader:selftest")
-time.sleep(25)
-send("scoreboard players get #pass offr.tmp")
-time.sleep(3)
-send("scoreboard players get #fail offr.tmp")
-time.sleep(6)
+time.sleep(20)
+send("vehicle test")
+time.sleep(45)
+send("version VehicleMod")
+time.sleep(5)
 
 txt = get_log()
 log("--- linii importante din consolă ---")
 for l in txt.splitlines():
-    ll = l[:185]
-    if any(k in l for k in ("TEST OK", "TEST ESEC", "OffroaderPlugin", "#pass", "#fail",
+    if any(k in l for k in ("VehicleMod", "TEST OK", "TEST ESEC", "FINAL:",
                             "Reload complete", "Done (", "ERROR", "Exception")):
-        log(f"  {ll}")
-log("=== UPGRADE v2.0 FINALIZAT ===")
+        log(f"  {l[:185]}")
+log("=== DEPLOY VEHICLEMOD FINALIZAT ===")

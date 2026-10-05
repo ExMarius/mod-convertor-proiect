@@ -3,7 +3,7 @@ name: build-plugin
 on:
   push:
     branches: ['arena/**']
-    paths: ['plugin/**', '.github/workflows/build-plugin.yml']
+    paths: ['vehiclemod/**', '.github/workflows/build-plugin.yml']
   workflow_dispatch: {}
 
 permissions:
@@ -20,19 +20,19 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Compilare plugin
+      - name: Compilare plugin VehicleMod
         run: |
           set -o pipefail
-          mvn -f plugin/pom.xml package 2>&1 | tee plugin/build-output.txt
+          mvn -f vehiclemod/plugin/pom.xml package 2>&1 | tee vehiclemod/build-output.txt
 
       - name: Publică erorile în repo (la eșec)
         if: failure()
         run: |
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
-          mkdir -p plugin/release
-          cp plugin/build-output.txt plugin/release/build-errors.txt 2>/dev/null || mvn -f plugin/pom.xml package > plugin/release/build-errors.txt 2>&1 || true
-          git add plugin/release/build-errors.txt
+          mkdir -p vehiclemod/release
+          cp vehiclemod/build-output.txt vehiclemod/release/build-errors.txt 2>/dev/null || true
+          git add vehiclemod/release/build-errors.txt
           git commit -m "build: erori de compilare [skip ci]" || echo "nimic"
           for i in 1 2 3 4; do
             git pull --rebase -q origin arena/01a106d2-mod-convertor-proiect && git push -q origin HEAD:arena/01a106d2-mod-convertor-proiect && echo "push OK" && break
@@ -41,56 +41,56 @@ jobs:
 
       - name: Verificare jar
         run: |
-          ls -la plugin/target/OffroaderPlugin.jar
-          unzip -l plugin/target/OffroaderPlugin.jar | head -20
+          ls -la vehiclemod/plugin/target/VehicleMod.jar
+          unzip -l vehiclemod/plugin/target/VehicleMod.jar | head -20
 
       - name: Test pe server Paper 1.21.4 real
         run: |
           set -o pipefail
           {
             set -x
-            URL=$(curl -sfL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest" | jq -r '.downloads["server:default"].url')
-            if [ -z "$URL" ] || [ "$URL" = "null" ]; then
-              echo "fill v3 indisponibil, încerc v2..."
-              BUILD=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds | jq -r '.builds[-1].build')
-              NAME=$(curl -s https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD | jq -r '.downloads.application.name')
-              URL="https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/$BUILD/downloads/$NAME"
-            fi
-            echo "Descarc Paper de la: $URL"
-            curl -sfL -o paper.jar "$URL"
-            ls -la paper.jar
             mkdir -p server/plugins
-            mv paper.jar server/paper.jar
             cd server
-            echo "eula=true" > eula.txt
-            printf "online-mode=false\nlevel-type=minecraft\\:flat\nview-distance=4\nspawn-monsters=false\n" > server.properties
-            cp ../plugin/target/OffroaderPlugin.jar plugins/
-            timeout 150 java -Xmx2G -jar paper.jar nogui > run.log 2>&1 || true
-            tail -40 run.log
-          } 2>&1 | tee smoke-diag.txt
-          grep -qE "OffroaderPlugin.*activ" server/run.log && echo "=== SMOKE TEST OK: pluginul s-a încărcat pe server real ===" || { echo "=== SMOKE TEST FAILED ==="; exit 1; }
+            curl -sL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest/downloads/server:default" -o paper.jar
+            java -jar paper.jar --nogui &
+            echo $! > pid
+            sleep 5
+            cd ..
+            # așteaptă „Done" (max 120s)
+            for i in $(seq 1 60); do
+              grep -q "Done (" server/run.log 2>/dev/null && break
+              grep -q "Done (" server/logs/latest.log 2>/dev/null && break
+              sleep 2
+            done
+            cp vehiclemod/plugin/target/VehicleMod.jar server/plugins/
+            sleep 10
+            # pluginul se încarcă la boot; repornim rapid cu pluginul
+            kill $(cat server/pid) 2>/dev/null || true
+            sleep 5
+            cd server && java -jar paper.jar --nogui > run.log 2>&1 &
+            echo $! > pid
+            cd ..
+            for i in $(seq 1 90); do
+              sleep 2
+              grep -q "Done (" server/run.log 2>/dev/null && break
+            done
+            grep -E "VehicleMod|ERROR" server/run.log | head -20
+            grep -qE "VehicleMod activ" server/run.log && echo "=== SMOKE TEST OK ===" || { echo "=== SMOKE TEST FAILED ==="; exit 1; }
+          } 2>&1 | tee vehiclemod/smoke.txt
+        env:
+          MALLOC_ARENA_MAX: 2
 
-      - name: Publică erorile în repo (la eșec)
-        if: failure()
+      - name: Comite jar-ul în repo
+        if: success()
         run: |
           git config user.name "arena-agent"
           git config user.email "297053741+arena-agent@users.noreply.github.com"
-          mkdir -p plugin/release
-          { [ -f plugin/build-output.txt ] && cp plugin/build-output.txt plugin/release/build-errors.txt
-            [ -f smoke-diag.txt ] && cp smoke-diag.txt plugin/release/smoke-diag.txt
-            if [ -f server/run.log ]; then tail -100 server/run.log > plugin/release/server-test.log; else echo "server/run.log lipsește" > plugin/release/server-test.log; fi
-          } || true
-          git add plugin/release/
-          git commit -m "build: log-uri diagnostic CI [skip ci]" || echo "nimic de comis"
-          git push || echo "push eșuat"
-
-      - name: Commit jar în repo
-        run: |
-          mkdir -p plugin/release
-          cp plugin/target/OffroaderPlugin.jar plugin/release/OffroaderPlugin.jar
-          git config user.name "arena-agent"
-          git config user.email "297053741+arena-agent@users.noreply.github.com"
-          git rm -f --cached plugin/release/build-errors.txt 2>/dev/null || true
-          git add plugin/release/OffroaderPlugin.jar
-          git commit -m "build: OffroaderPlugin.jar (CI) [skip ci]" || echo "nimic nou de comis"
-          git push
+          mkdir -p vehiclemod/release
+          cp vehiclemod/plugin/target/VehicleMod.jar vehiclemod/release/VehicleMod.jar
+          git add -f vehiclemod/release/VehicleMod.jar
+          git commit -m "build: VehicleMod.jar (CI) [skip ci]" || echo "nimic"
+          for i in 1 2 3 4; do
+            git pull --rebase -q origin arena/01a106d2-mod-convertor-proiect && git push -q origin HEAD:arena/01a106d2-mod-convertor-proiect && echo publicat && exit 0
+            sleep 8
+          done
+          echo "push eșuat"
