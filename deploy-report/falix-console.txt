@@ -1,18 +1,37 @@
-=== 15:39:58 DEPLOY VEHICLEMOD 1:1 (tot modul) ===
-server id=3500167
-cheia SSH e deja în cont
-Traceback (most recent call last):
-  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/falix_upgrade.py", line 84, in <module>
-    c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
-  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 477, in connect
-    self._auth(
-  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 779, in _auth
-    raise saved_exception
-  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/client.py", line 696, in _auth
-    self._transport.auth_publickey(username, key)
-  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/transport.py", line 1600, in auth_publickey
-    return self.auth_handler.wait_for_response(my_event)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/.local/lib/python3.12/site-packages/paramiko/auth_handler.py", line 227, in wait_for_response
-    raise e
-paramiko.ssh_exception.AuthenticationException: Authentication failed.
+servere pe cont: 1
+  - Offroader-Test (id 3500167)
+
+stare: 200 {"object": "server_resources", "cpu": 1.0, "ram": 2560, "disk": 10000}
+
+=== ULTIMELE 120 LINII DIN CONSOLĂ (31 disponibile) ===
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 77958ea5-f59d-4cdd-8260-cddd9071832c
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: d2c1d9ca-6762-4098-89eb-ee430cedc727
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 5281f9dc-43dc-4a2a-b46a-a094449e69f7
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 1523ab53-4072-4974-be21-daa741519983
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 5c81559c-70ed-4017-b57f-df0478b4e3d8
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 4f8d91d3-3880-4a76-b337-fd77ae5f2e39
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 8dabf146-761e-4deb-91dd-e44d7bc3809d
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: eadc5bbe-4a97-4f7a-b7d2-6561259d25d4
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: b4219e67-8c94-4cb7-8ad6-052fcc8a8ffc
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 746d7ff7-9a33-464f-bfbe-64db2d1d2c3b
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: c7ce0862-f93b-4f6b-ae68-096865ef7ed0
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 332bff45-790e-4718-ae5e-fa88fc3c03c9
+[16:07:00] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: df2dc88a-9162-485e-9e76-f3865beed437
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: b368f3a0-d38f-46f4-ae98-05955b64f7f8
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 7d279fe5-8e2e-431f-b658-89647373ac9a
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: dec19733-c477-460f-8e30-6ae5eb5ec1cc
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 85fc219c-89d2-4b12-a05b-5c08938e8cf6
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: c1ee6fbd-f68f-4f61-95c5-60be885c79a5
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: cf701e66-62f3-4980-bb0a-fc6d48b2e871
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: de3803b5-fb64-4f0f-bd63-f9405cefd2d8
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 1424ffa1-d8a7-4b13-8285-f8f02fb6ca2c
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: b449ecc7-9878-4dd5-8018-0c02fccfcaaf
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 5cfc94c7-ffdd-4a68-837d-a397dea6b170
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 5ddfabc0-baff-4ffe-9ffc-1e4b12602dfd
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 29c2b1f4-76ba-42ed-9548-1fd3ab3decaf
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: dece7400-d978-4399-88bb-f494fa9f3e2c
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 8ca8630f-954b-42a1-bb26-369d01147d62
+[16:07:01] [Server thread/WARN]: [OffroaderPlugin] cal offroader recuperat de sub lume: 7f9302cc-3762-402c-8148-5387fdbaa117
+[16:07:02] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 72863ms or 1457 ticks behind
+[16:16:35] [Server thread/INFO]: ExMarius lost connection: You have been idle for too long!
+[16:16:35] [Server thread/INFO]: ExMarius left the game
