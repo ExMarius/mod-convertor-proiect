@@ -167,6 +167,15 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
         // imediat și la 5s (TLauncher ratează uneori prima cerere)
         applyRp(p);
         Bukkit.getScheduler().runTaskLater(this, () -> { if (p.isOnline()) applyRp(p); }, 100L);
+        if (p.getScoreboardTags().contains("vm_kit")) return;
+        Bukkit.getScheduler().runTaskLater(this, () -> {
+            if (!p.isOnline()) return;
+            giveSpawnItem(p, defs.get("off_roader"));
+            p.getInventory().addItem(modItem("vehicle:jerry_can", "§cBidon combustibil",
+                    "§7Click-dreapta lângă vehicul: alimentare +20%"));
+            p.addScoreboardTag("vm_kit");
+            p.sendMessage("§6[VehicleMod] §eAi primit cheia offroader-ului și bidonul. §7/vehicle list§e = toate vehiculele.");
+        }, 30L);
     }
 
     private void applyRp(Player p) {
@@ -186,16 +195,6 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
             }
             default -> {}
         }
-    }
-        if (p.getScoreboardTags().contains("vm_kit")) return;
-        Bukkit.getScheduler().runTaskLater(this, () -> {
-            if (!p.isOnline()) return;
-            giveSpawnItem(p, defs.get("off_roader"));
-            p.getInventory().addItem(modItem("vehicle:jerry_can", "§cBidon combustibil",
-                    "§7Click-dreapta lângă vehicul: alimentare +20%"));
-            p.addScoreboardTag("vm_kit");
-            p.sendMessage("§6[VehicleMod] §eAi primit cheia offroader-ului și bidonul. §7/vehicle list§e = toate vehiculele.");
-        }, 30L);
     }
 
     private void giveSpawnItem(Player p, VehicleDef def) {
