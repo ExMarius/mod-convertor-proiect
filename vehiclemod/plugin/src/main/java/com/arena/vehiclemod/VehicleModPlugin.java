@@ -163,10 +163,30 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        // resource pack-ul portului (assets-urile reale ale modului)
+        // resource pack-ul portului (assets-urile reale ale modului) — de 2 ori:
+        // imediat și la 5s (TLauncher ratează uneori prima cerere)
+        applyRp(p);
+        Bukkit.getScheduler().runTaskLater(this, () -> { if (p.isOnline()) applyRp(p); }, 100L);
+    }
+
+    private void applyRp(Player p) {
         byte[] hash = null;
         try { hash = hexToBytes(rpSha1); } catch (Exception ignored) {}
         try { p.setResourcePack(rpUrl, hash); } catch (Exception ex) { getLogger().warning("RP: " + ex); }
+    }
+
+    @EventHandler
+    public void onRpStatus(org.bukkit.event.player.PlayerResourcePackStatusEvent e) {
+        Player p = e.getPlayer();
+        switch (e.getStatus()) {
+            case DECLINED -> p.sendMessage("§6[VehicleMod] §cAi refuzat pack-ul! §eFără el vezi lingouri de fier în locul mașinilor. §fDescarcă-l de aici: §n" + rpUrl + " §fsau scrie §e/vehicle rp");
+            case FAILED_DOWNLOAD -> {
+                p.sendMessage("§6[VehicleMod] §cPack-ul a eșuat la download — reîncerc...");
+                Bukkit.getScheduler().runTaskLater(this, () -> { if (p.isOnline()) applyRp(p); }, 40L);
+            }
+            default -> {}
+        }
+    }
         if (p.getScoreboardTags().contains("vm_kit")) return;
         Bukkit.getScheduler().runTaskLater(this, () -> {
             if (!p.isOnline()) return;
@@ -224,6 +244,11 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
                 giveSpawnItem(p, d);
                 p.sendMessage("§6[VehicleMod] §aAi primit " + d.name());
             }
+            case "rp" -> {
+                if (!(sender instanceof Player pl)) { sender.sendMessage(rpUrl); return true; }
+                applyRp(pl);
+                pl.sendMessage("§6[VehicleMod] §ePack retrimis — §aACCEPTĂ-L§e când te întreabă clientul!");
+            }
             case "test" -> selfTest(sender);
             default -> sender.sendMessage("§csubcomandă necunoscută");
         }
@@ -254,11 +279,13 @@ public final class VehicleModPlugin extends JavaPlugin implements Listener {
                 storeVehicle(h);
                 Thread.sleep(50);
                 int left = countFollowers(h);
-                if (left != -2) { // -2 = calul dispărut (corect)
+                boolean stored = !h.isValid() && left == 0;
+                if (!stored) {
                     fail++;
-                    getLogger().warning("[TEST ESEC] " + d.id() + ": piese rămase după store: " + left);
-                } else if (ok) { /* deja numărat */ }
-                if (!h.isValid()) { /* store OK */ } else { fail++; }
+                    getLogger().warning("[TEST ESEC] " + d.id() + ": după store cal=" + h.isValid() + " piese=" + left);
+                } else {
+                    getLogger().info("[TEST OK] " + d.id() + " depozitat curat");
+                }
             } catch (Exception ex) {
                 fail++;
                 getLogger().warning("[TEST ESEC] " + d.id() + ": " + ex);

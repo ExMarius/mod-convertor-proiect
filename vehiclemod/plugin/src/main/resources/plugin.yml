@@ -1,5 +1,5 @@
 name: VehicleMod
-version: 3.0.0
+version: 3.0.1
 main: com.arena.vehiclemod.VehicleModPlugin
 api-version: '1.21'
 description: Port 1:1 server-side al MrCrayfish's Vehicle Mod (client vanilla)
