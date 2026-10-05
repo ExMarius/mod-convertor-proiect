@@ -1,0 +1,59 @@
+++ curl -sfL https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest
+++ jq -r '.downloads["server:default"].url'
++ URL=https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar
++ '[' -z https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar ']'
++ '[' https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar = null ']'
++ echo 'Descarc Paper de la: https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar'
+Descarc Paper de la: https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar
++ curl -sfL -o paper.jar https://fill-data.papermc.io/v1/objects/5ee4f542f628a14c644410b08c94ea42e772ef4d29fe92973636b6813d4eaffc/paper-1.21.4-232.jar
++ ls -la paper.jar
+-rw-r--r-- 1 runner runner 51437498 Oct  4 22:49 paper.jar
++ mkdir -p server/plugins
++ mv paper.jar server/paper.jar
++ cd server
++ echo eula=true
++ printf 'online-mode=false\nlevel-type=minecraft\:flat\nview-distance=4\nspawn-monsters=false\n'
++ cp ../plugin/target/OffroaderPlugin.jar plugins/
++ timeout 150 java -Xmx2G -jar paper.jar nogui
++ true
++ tail -40 run.log
+[22:49:44 INFO]: Running delayed init tasks
+[22:49:44 INFO]: Done (14.103s)! For help, type "help"
+[22:49:44 INFO]: *************************************************************************************
+[22:49:44 INFO]: This is the first time you're starting this server.
+[22:49:44 INFO]: It's recommended you read our 'Getting Started' documentation for guidance.
+[22:49:44 INFO]: View this and more helpful information here: https://docs.papermc.io/paper/next-steps
+[22:49:44 INFO]: *************************************************************************************
+[22:51:58 INFO]: Stopping server
+[22:51:58 INFO]: [OffroaderPlugin] Disabling OffroaderPlugin v1.0.0
+[22:51:58 INFO]: Saving players
+[22:51:58 INFO]: Saving worlds
+[22:51:58 INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[22:51:58 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[22:51:58 INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[22:51:58 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[22:51:58 INFO]: [ChunkHolderManager] Saved 841 block chunks, 49 entity chunks, 0 poi chunks in world 'world' in 0.39s
+[22:51:58 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[22:51:58 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[22:51:58 INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[22:51:58 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[22:51:58 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[22:51:58 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[22:51:58 INFO]: [ChunkHolderManager] Saved 841 block chunks, 49 entity chunks, 0 poi chunks in world 'world_nether' in 0.30s
+[22:51:58 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[22:51:58 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[22:51:58 INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[22:51:58 INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[22:51:58 INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[22:51:58 INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[22:51:59 INFO]: [ChunkHolderManager] Saved 841 block chunks, 49 entity chunks, 0 poi chunks in world 'world_the_end' in 0.18s
+[22:51:59 INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[22:51:59 INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[22:51:59 INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[22:51:59 INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[22:51:59 INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[22:51:59 INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[22:51:59 INFO]: Waiting for I/O tasks to complete...
+[22:51:59 INFO]: All I/O tasks to complete
+[22:51:59 INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[22:51:59 INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...

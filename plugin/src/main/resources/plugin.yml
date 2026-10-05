@@ -1,0 +1,5 @@
+name: OffroaderPlugin
+version: 2.1.0
+main: com.arena.offroader.OffroaderPlugin
+api-version: '1.21'
+description: Offroader condus ca in MrCrayfish's Vehicle Mod (W/A/S/D, camera libera)

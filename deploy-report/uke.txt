@@ -1,0 +1,16 @@
+=== Sun Oct  4 21:47:35 UTC 2026 probă uke.progamer.me din CI ===
+SLP :15704 OK: Paper 1.21.4 protocol 769
+   motd: {'text': 'A Minecraft Server\n', 'extra': [{'text': 'Powered by ', 'color': 'gray'}, {'text': 'powerupstack.com', 'underlined': True, 'color
+   players: 1/20
+Traceback (most recent call last):
+  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/uke_probe2.py", line 49, in <module>
+    import paramiko
+ModuleNotFoundError: No module named 'paramiko'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/uke_probe2.py", line 51, in <module>
+    import os; os.system("pip3 install -q paramiko"); import paramiko
+                                                      ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'paramiko'

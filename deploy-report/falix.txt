@@ -1,0 +1,204 @@
+=== Sun Oct  4 22:03:24 UTC 2026 sondaj API Falix ===
+=== /applications (auth) ===
+200
+  {"object": "application", "id": 23137, "slug": "minecraft-java", "name": "Minecraft Java/Bedrock", "kind": "game", "icon": "cube", "free_tier": true}
+  {"object": "application", "id": 23188, "slug": "hytale", "name": "Hytale", "kind": "game", "icon": "cube", "free_tier": true}
+  {"object": "application", "id": 23121, "slug": "terraria-vanilla", "name": "Terraria Vanilla", "kind": "game", "icon": "mountain", "free_tier": true}
+  {"object": "application", "id": 23122, "slug": "tshock", "name": "TShock (v5+)", "kind": "game", "icon": "hammer", "free_tier": true}
+  {"object": "application", "id": 23123, "slug": "tshock-legacy", "name": "TShock (v4 & Below)", "kind": "game", "icon": "hammer", "free_tier": true}
+  {"object": "application", "id": 23124, "slug": "tmodloader", "name": "TModloader", "kind": "game", "icon": "puzzle-piece", "free_tier": true}
+  {"object": "application", "id": 23125, "slug": "factorio-vanilla", "name": "Factorio Vanilla", "kind": "game", "icon": "industry", "free_tier": true}
+  {"object": "application", "id": 23126, "slug": "factorio-mod-updater", "name": "Factorio with Mod Updater", "kind": "game", "icon": "sync", "free_tier": true}
+  {"object": "application", "id": 23127, "slug": "clusterio", "name": "Clusterio", "kind": "game", "icon": "network-wired", "free_tier": true}
+  {"object": "application", "id": 23135, "slug": "palworld", "name": "Palworld", "kind": "game", "icon": "dragon", "free_tier": false}
+  {"object": "application", "id": 23148, "slug": "satisfactory", "name": "Satisfactory", "kind": "game", "icon": "industry", "free_tier": false}
+  {"object": "application", "id": 23147, "slug": "ark-survival-evolved", "name": "ARK: Survival Evolved", "kind": "game", "icon": "dragon", "free_tier": false}
+  {"object": "application", "id": 23150, "slug": "rust-autowipe", "name": "Rust Autowipe", "kind": "game", "icon": "house-building", "free_tier": false}
+  {"object": "application", "id": 23156, "slug": "rust-staging", "name": "Rust Staging", "kind": "game", "icon": "house-building", "free_tier": false}
+  {"object": "application", "id": 23151, "slug": "valheim", "name": "Valheim", "kind": "game", "icon": "axe-battle", "free_tier": false}
+  {"object": "application", "id": 23152, "slug": "valheim-plus", "name": "Valheim Plus Mod", "kind": "game", "icon": "axe-battle", "free_tier": false}
+  {"object": "application", "id": 23153, "slug": "valheim-bepinex", "name": "Valheim BepINex", "kind": "game", "icon": "axe-battle", "free_tier": false}
+  {"object": "application", "id": 23154, "slug": "subnautica", "name": "Subnautica", "kind": "game", "icon": "water", "free_tier": false}
+  {"object": "application", "id": 23155, "slug": "scum", "name": "SCUM", "kind": "game", "icon": "skull", "free_tier": false}
+  {"object": "application", "id": 23157, "slug": "trackmania", "name": "Trackmania", "kind": "game", "icon": "flag-checkered", "free_tier": false}
+  {"object": "application", "id": 23158, "slug": "aloft", "name": "Aloft", "kind": "game", "icon": "cloud", "free_tier": false}
+  {"object": "application", "id": 23159, "slug": "unturned", "name": "Unturned", "kind": "game", "icon": "biohazard", "free_tier": false}
+  {"object": "application", "id": 23160, "slug": "sons-of-the-forest", "name": "Sons of the Forest", "kind": "game", "icon": "tree", "free_tier": false}
+  {"object": "application", "id": 23186, "slug": "beammp", "name": "BeamMP", "kind": "game", "icon": "car", "free_tier": false}
+  {"object": "application", "id": 23189, "slug": "astroneer", "name": "Astroneer", "kind": "game", "icon": "rocket", "free_tier": false}
+  {"object": "application", "id": 23190, "slug": "project-zomboid", "name": "Project Zomboid", "kind": "game", "icon": "biohazard", "free_tier": false}
+  {"object": "application", "id": 23191, "slug": "dayz", "name": "DayZ", "kind": "game", "icon": "biohazard", "free_tier": false}
+  {"object": "application", "id": 23163, "slug": "nodejs", "name": "Node.js", "kind": "application", "icon": "node-js", "free_tier": false}
+  {"object": "application", "id": 23164, "slug": "python", "name": "Python", "kind": "application", "icon": "python", "free_tier": false}
+  {"object": "application", "id": 23165, "slug": "java", "name": "Java", "kind": "application", "icon": "java", "free_tier": false}
+  {"object": "application", "id": 23166, "slug": "bun", "name": "Bun", "kind": "application", "icon": "bread-slice", "free_tier": false}
+  {"object": "application", "id": 23167, "slug": "rust", "name": "Rust", "kind": "application", "icon": "rust", "free_tier": false}
+  {"object": "application", "id": 23168, "slug": "csharp", "name": "C#", "kind": "application", "icon": "hashtag", "free_tier": false}
+  {"object": "application", "id": 23169, "slug": "dart", "name": "Dart", "kind": "application", "icon": "bullseye", "free_tier": false}
+  {"object": "application", "id": 23170, "slug": "lua", "name": "Lua", "kind": "application", "icon": "moon", "free_tier": false}
+  {"object": "application", "id": 23171, "slug": "go", "name": "Go", "kind": "application", "icon": "golang", "free_tier": false}
+  {"object": "application", "id": 23172, "slug": "elixir", "name": "Elixir", "kind": "application", "icon": "droplet", "free_tier": false}
+  {"object": "application", "id": 23173, "slug": "deno", "name": "Deno", "kind": "application", "icon": "dinosaur", "free_tier": false}
+  {"object": "application", "id": 23177, "slug": "php-cli", "name": "PHP CLI", "kind": "application", "icon": "php", "free_tier": false}
+  {"object": "application", "id": 23178, "slug": "php-composer", "name": "PHP Composer", "kind": "application", "icon": "php", "free_tier": false}
+
+=== /account/billing/balance ===
+200 {"data": {"object": "billing_balance", "credit_balance": 0.0, "prepaid_balance": 0.0, "currency": "USD", "outstanding_balance": 0.0}}
+
+=== CreateServerRequest din openapi ===
+{
+ "type": "object",
+ "description": "Request body for `POST /servers`.",
+ "required": [
+  "name",
+  "subdomain",
+  "application",
+  "plan"
+ ],
+ "properties": {
+  "application": {
+   "$ref": "#/components/schemas/ApplicationSelector",
+   "description": "What to deploy."
+  },
+  "eula_accepted": {
+   "type": "boolean",
+   "description": "Must be `true` for Minecraft-family applications (Mojang EULA)."
+  },
+  "init": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "FalixInit manifest (YAML, `#falix-init` header) applied after the\nserver is provisioned. The full manifest reference lives on\n`POST /init/validate`; lint there first."
+  },
+  "name": {
+   "type": "string",
+   "description": "Display name: 1-20 characters, letters/digits/spaces/`-`/`_`.",
+   "example": "My Server"
+  },
+  "plan": {
+   "$ref": "#/components/schemas/PlanSelector",
+   "description": "Free or paid plan."
+  },
+  "subdomain": {
+   "type": "string",
+   "description": "Subdomain label (without suffix), 3-30 lowercase characters.",
+   "example": "myserver"
+  },
+  "subdomain_suffix": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Subdomain suffix; must be an enabled suffix. Defaults to the\nplatform default.",
+   "example": "falixsrv.me"
+  },
+  "template_id": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "format": "int64",
+   "description": "Saved FalixInit template to use as the manifest base; inline\n`init` top-level keys override the template's."
+  },
+  "visibility": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Server-list visibility: `public` or `private`. Defaults to private."
+  }
+ },
+ "additionalProperties": false
+}
+
+--- ApplicationSelector ---
+{
+ "type": "object",
+ "description": "Application selector: exactly one of `slug` or `id`.",
+ "properties": {
+  "id": {
+   "type": [
+    "integer",
+    "null"
+   ],
+   "format": "int64",
+   "description": "Numeric application id from `GET /applications`."
+  },
+  "slug": {
+   "type": [
+    "string",
+    "null"
+   ],
+   "description": "Application slug from `GET /applications` (preferred).",
+   "example": "minecraft-java"
+  }
+ },
+ "additionalProperties": false
+}
+
+--- PlanSelector ---
+{
+ "oneOf": [
+  {
+   "type": "object",
+   "description": "Free plan: resources are assigned by the platform.",
+   "required": [
+    "type"
+   ],
+   "properties": {
+    "type": {
+     "type": "string",
+     "enum": [
+      "free"
+     ]
+    }
+   }
+  },
+  {
+   "type": "object",
+   "description": "Paid plan: charged to the billing balance, monthly cycles only.",
+   "required": [
+    "ram_mb",
+    "cpu_cores",
+    "location",
+    "type"
+   ],
+   "properties": {
+    "billing_cycle": {
+     "type": "integer",
+     "format": "int32",
+     "description": "Billing cycle in months: 1, 3, 6, or 12. Defaults to 1."
+    },
+    "cpu_cores": {
+     "type": "integer",
+     "format": "int64",
+     "description": "CPU cores (validated against the pricing table's range)."
+    },
+    "currency": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "description": "Currency code; defaults to the subscription currency."
+    },
+    "location": {
+     "type": "string",
+     "description": "Datacenter location (see `GET /account/billing/pricing/catalog`)."
+    },
+    "ram_mb": {
+     "type": "integer",
+     "format": "int64",
+     "description": "Memory in MB (validated against the pricing table's range)."
+    },
+    "type": {
+     "type": "string",
+     "enum": [
+      "paid"
+     ]
+    }
+   }
+  }
+ ],
+ "description": "Plan selection for the new server."
+}
