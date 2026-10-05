@@ -102,8 +102,18 @@ for remote, local in [("plugins/OffroaderPlugin.jar", "plugin/release/OffroaderP
 sftp.close(); c.close()
 
 # --- asigură serverul pornit (așteaptă verificarea până la 50 min) ---
-code, r = api("GET", f"/servers/{SID}/resources")
-state = ((r.get("data") or {}).get("current_state") or "").lower()
+state = ""
+for _ in range(4):
+    code, r = api("GET", f"/servers/{SID}/resources")
+    state = ((r.get("data") or {}).get("current_state") or "").lower()
+    if state in ("running", "started"):
+        break
+    # fallback: log-ul arată un server viu?
+    t = get_log()
+    if "Done (" in t and "Stopping" not in t.split("Done (")[-1]:
+        state = "running"
+        break
+    time.sleep(6)
 log(f"stare server: {state or 'necunoscută'}")
 if state not in ("running", "started"):
     code, r = api("POST", f"/servers/{SID}/power", body={"signal": "start"})

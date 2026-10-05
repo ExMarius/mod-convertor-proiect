@@ -22,7 +22,7 @@ jobs:
           pip install -q paramiko
           FALIX_TOKEN=$(openssl enc -d -aes-256-cbc -pbkdf2 -base64 -k "$PTERO_TOKEN" -in deploy/falix_token.enc)
           set -o pipefail
-          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_console.py 2>&1 | tee deploy-report/falix-console.txt
+          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_upgrade.py 2>&1 | tee deploy-report/falix-console.txt
 
       - name: SLP după deploy
         if: always()
