@@ -167,6 +167,16 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
 
         v.grounded = horse.isOnGround();   // starea de la tick-ul precedent al calului
 
+        // safety-net: dacă calul a ajuns sub lume (lag/coliziune ratată), urcă-l înapoi
+        Location l0 = horse.getLocation();
+        if (l0.getY() < horse.getWorld().getMinHeight() - 8) {
+            Location safe = l0.clone();
+            safe.setY(horse.getWorld().getMinHeight() + 2);
+            horse.teleport(safe);
+            v.dy = 0;
+            getLogger().warning("cal offroader recuperat de sub lume: " + horse.getUniqueId());
+        }
+
         Player driver = null;
         for (Entity p : horse.getPassengers()) if (p instanceof Player pl) { driver = pl; break; }
 
@@ -317,7 +327,7 @@ public final class OffroaderPlugin extends JavaPlugin implements Listener {
             var inv = horse.getInventory();
             if (inv.getSaddle() != null) inv.setSaddle(null);  // pluginul = singurul șofer
             // atributele de mișcare (compatibil cu testul vechi; AI-ul nu umblă singur)
-            double attr = boosting ? 0.55 : 0.3375;
+            double attr = (boosting || boostScore) ? 0.55 : 0.3375;
             var speedAttr = horse.getAttribute(Attribute.MOVEMENT_SPEED);
             if (speedAttr != null && Math.abs(speedAttr.getBaseValue() - attr) > 1e-6)
                 speedAttr.setBaseValue(attr);

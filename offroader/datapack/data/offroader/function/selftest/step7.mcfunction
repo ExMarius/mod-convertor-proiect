@@ -11,7 +11,7 @@ data modify storage offroader:st msg set value "viteza zero in parcare"
 function offroader:selftest/check with storage offroader:st
 
 # depozitare (înainte de iteme — independent de ele)
-execute as @e[type=minecraft:horse,tag=offr_veh,distance=..5,limit=1,sort=nearest] at @s run function offroader:veh/store
+execute as @e[type=minecraft:horse,tag=offr_veh,distance=..12,limit=1,sort=nearest] at @s run function offroader:veh/store
 execute unless entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 1
 execute if entity @e[type=minecraft:horse,tag=offr_veh,limit=1] run scoreboard players set #ok offr.tmp 0
 data modify storage offroader:st msg set value "masina s-a depozitat (cal + piese eliminate)"
