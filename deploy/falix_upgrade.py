@@ -75,32 +75,6 @@ if not have:
 else:
     log("cheia SSH e deja în cont")
 
-# --- SFTP ---
-code, r = api("GET", f"/servers/{SID}/sftp")
-d = (r.get("data", {}) or {})
-HOST, PORT, USER = d.get("hostname"), int(d.get("port") or 22), d.get("username")
-import paramiko
-c = paramiko.SSHClient(); c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
-          timeout=30, allow_agent=False, look_for_keys=False)
-sftp = c.open_sftp()
-
-# curăță vechiul sistem (plugin offroader + datapack)
-for old in ["plugins/OffroaderPlugin.jar", "world/datapacks/OffroaderDatapack.zip"]:
-    try:
-        sftp.remove(old); log(f"  șters vechi: {old}")
-    except FileNotFoundError:
-        pass
-    except Exception as e:
-        log(f"  {old}: {e}")
-
-# urcă noul plugin
-sftp.put("vehiclemod/release/VehicleMod.jar", "plugins/VehicleMod.jar")
-ok = sftp.stat("plugins/VehicleMod.jar").st_size == os.path.getsize("vehiclemod/release/VehicleMod.jar")
-log(f"  plugins/VehicleMod.jar: {sftp.stat('plugins/VehicleMod.jar').st_size}b {'OK' if ok else 'GRESIT!'}")
-if not ok: sys.exit(1)
-sftp.close(); c.close()
-
 # --- pornire dacă e nevoie (așteaptă verificarea până la 50 min) ---
 state = ""
 for _ in range(4):
@@ -137,6 +111,39 @@ if state not in ("running", "started"):
         time.sleep(10)
         if "Done (" in get_log():
             log("serverul e SUS"); break
+
+# --- SFTP ---
+code, r = api("GET", f"/servers/{SID}/sftp")
+d = (r.get("data", {}) or {})
+HOST, PORT, USER = d.get("hostname"), int(d.get("port") or 22), d.get("username")
+import paramiko
+c = paramiko.SSHClient(); c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+for attempt in range(3):
+    try:
+        c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
+                  timeout=30, allow_agent=False, look_for_keys=False)
+        break
+    except Exception as e:
+        log(f"  SFTP auth încercarea {attempt+1}: {e}")
+        if attempt == 2: raise
+        time.sleep(20)
+sftp = c.open_sftp()
+
+# curăță vechiul sistem (plugin offroader + datapack)
+for old in ["plugins/OffroaderPlugin.jar", "world/datapacks/OffroaderDatapack.zip"]:
+    try:
+        sftp.remove(old); log(f"  șters vechi: {old}")
+    except FileNotFoundError:
+        pass
+    except Exception as e:
+        log(f"  {old}: {e}")
+
+# urcă noul plugin
+sftp.put("vehiclemod/release/VehicleMod.jar", "plugins/VehicleMod.jar")
+ok = sftp.stat("plugins/VehicleMod.jar").st_size == os.path.getsize("vehiclemod/release/VehicleMod.jar")
+log(f"  plugins/VehicleMod.jar: {sftp.stat('plugins/VehicleMod.jar').st_size}b {'OK' if ok else 'GRESIT!'}")
+if not ok: sys.exit(1)
+sftp.close(); c.close()
 
 # --- reload (plugin + tot) și testul complet din consolă ---
 send("reload confirm")
