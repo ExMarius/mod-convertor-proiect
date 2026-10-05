@@ -112,21 +112,33 @@ if state not in ("running", "started"):
         if "Done (" in get_log():
             log("serverul e SUS"); break
 
-# --- SFTP ---
+# --- SFTP: parola (dată de utilizator) sau cheia; hostul din API sau cel nou ---
+PASS = os.popen(f"openssl enc -d -aes-256-cbc -pbkdf2 -base64 -k '{os.environ['PTERO_TOKEN']}' -in deploy/falix_pass.enc").read().strip()
 code, r = api("GET", f"/servers/{SID}/sftp")
 d = (r.get("data", {}) or {})
 HOST, PORT, USER = d.get("hostname"), int(d.get("port") or 22), d.get("username")
 import paramiko
 c = paramiko.SSHClient(); c.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-for attempt in range(3):
-    try:
-        c.connect(HOST, port=PORT, username=USER, key_filename=KEYPATH,
-                  timeout=30, allow_agent=False, look_for_keys=False)
-        break
-    except Exception as e:
-        log(f"  SFTP auth încercarea {attempt+1}: {e}")
-        if attempt == 2: raise
-        time.sleep(20)
+connected = False
+for host, port in ((HOST, PORT), ("eu11-free.falixserver.net", 3928)):
+    for attempt in range(3):
+        try:
+            c.connect(host, port=port, username=USER, password=PASS,
+                      timeout=30, allow_agent=False, look_for_keys=False)
+            connected = True; break
+        except Exception as e:
+            log(f"  SFTP {host}:{port} parola, încercarea {attempt+1}: {type(e).__name__}")
+            try:
+                c.connect(host, port=port, username=USER, key_filename=KEYPATH,
+                          timeout=30, allow_agent=False, look_for_keys=False)
+                connected = True; break
+            except Exception as e2:
+                log(f"  SFTP {host}:{port} cheie, încercarea {attempt+1}: {type(e2).__name__}")
+                time.sleep(15)
+    if connected:
+        log(f"SFTP conectat: {host}:{port}"); break
+if not connected:
+    raise SystemExit("SFTP: nici parola, nici cheia nu merg")
 sftp = c.open_sftp()
 
 # curăță vechiul sistem (plugin offroader + datapack)
