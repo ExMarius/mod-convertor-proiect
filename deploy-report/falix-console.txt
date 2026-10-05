@@ -1,37 +1,33 @@
-=== 17:42:09 DEPLOY VEHICLEMOD 1:1 (tot modul) ===
+=== 18:03:26 DEPLOY VEHICLEMOD 1:1 (tot modul) ===
 server id=3500167
 cheia SSH e deja în cont
-stare server: running
-SFTP conectat: eu11-free.falixserver.net:3928
-  șters vechi: plugins/OffroaderPlugin.jar
-  șters vechi: world/datapacks/OffroaderDatapack.zip
-  plugins/VehicleMod.jar: 35720b OK
---- linii importante din consolă ---
-  [17:42:23] [Server thread/INFO]: [VehicleMod] Enabling VehicleMod v3.0.0
-  [17:42:23] [Server thread/INFO]: [VehicleMod] VehicleMod activ — 19 vehicule din mod, 10 drivabile acum.
-  [17:42:33] [Server thread/INFO]: [Geyser-Spigot] Done (9.096s)! Run /geyser help for help!
-  [17:42:33] [Server thread/INFO]: CONSOLE: Reload complete.
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] dirt_bike — 6/6 piese, motor 16.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] dirt_bike: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] go_kart — 7/7 piese, motor 18.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] go_kart: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] golf_cart — 13/13 piese, motor 25.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] golf_cart: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] lawn_mower — 7/7 piese, motor 8.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] lawn_mower: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] mini_bus — 15/15 piese, motor 14.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] mini_bus: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] moped — 4/4 piese, motor 12.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] moped: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] off_roader — 13/13 piese, motor 16.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] off_roader: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] quad_bike — 9/9 piese, motor 16.0
-  [17:42:34] [Server thread/WARN]: [VehicleMod] [TEST ESEC] quad_bike: piese rămase după store: 0
-  [17:42:34] [Server thread/INFO]: [VehicleMod] [TEST OK] sports_car — 9/9 piese, motor 20.0
-  [17:42:35] [Server thread/WARN]: [VehicleMod] [TEST ESEC] sports_car: piese rămase după store: 0
-  [17:42:35] [Server thread/INFO]: [VehicleMod] [TEST OK] tractor — 7/7 piese, motor 8.0
-  [17:42:35] [Server thread/WARN]: [VehicleMod] [TEST ESEC] tractor: piese rămase după store: 0
-  [17:42:35] [Server thread/INFO]: [VehicleMod] [VehicleMod TEST] FINAL: 10 trecute, 10 esuate
-  [17:42:35] [Server thread/INFO]: [VehicleMod TEST] 10 trecute, 10 esuate — vezi consola.
-  [17:43:19] [Server thread/INFO]: VehicleMod version 3.0.0
-=== DEPLOY VEHICLEMOD FINALIZAT ===
+stare server: necunoscută
+power start → 403 (verification_required)
+LINK_VERIFICARE: https://falixnodes.net/s/2z2s4pvbsx3lz
+aștept verificarea utilizatorului (până la 50 min)...
+  poll 0: ?
+  poll 4: ?
+  poll 8: ?
+  poll 12: ?
+  poll 16: ?
+  poll 20: ?
+  poll 24: ?
+  poll 28: ?
+  poll 32: ?
+  poll 36: ?
+  poll 40: ?
+  poll 44: ?
+  poll 48: ?
+  poll 52: ?
+  poll 56: ?
+  poll 60: ?
+  poll 64: ?
+  poll 68: ?
+  poll 72: ?
+  poll 76: ?
+  poll 80: ?
+  poll 84: ?
+  poll 88: ?
+  poll 92: ?
+  poll 96: ?
+=== OPRIT: 50 min fără verificare (fișierele sunt urcate) ===
