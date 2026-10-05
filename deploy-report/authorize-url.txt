@@ -1,0 +1,1 @@
+https://ouipanel.com/oauth/ia/authorize?response_type=code&client_id=dcr_L8p08um5Iq0YTYbK6yGb2yIVw5jJVSIievGhkEFh&redirect_uri=http%3A%2F%2Flocalhost%3A8931%2Fcallback&code_challenge=iSOmiz1vELXMofPYv5SpSFgGLbOEwhhEcfKoaIjjiQE&code_challenge_method=S256&state=arena&resource=https%3A%2F%2Fmcp.ouipanel.com%2Fmcp

@@ -1,0 +1,96 @@
+name: build-plugin
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['vehiclemod/**', '.github/workflows/build-plugin.yml']
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Compilare plugin VehicleMod
+        run: |
+          set -o pipefail
+          mvn -f vehiclemod/plugin/pom.xml package 2>&1 | tee vehiclemod/build-output.txt
+
+      - name: Publică erorile în repo (la eșec)
+        if: failure()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          mkdir -p vehiclemod/release
+          cp vehiclemod/build-output.txt vehiclemod/release/build-errors.txt 2>/dev/null || true
+          git add vehiclemod/release/build-errors.txt
+          git commit -m "build: erori de compilare [skip ci]" || echo "nimic"
+          for i in 1 2 3 4; do
+            git pull --rebase -q origin arena/01a106d2-mod-convertor-proiect && git push -q origin HEAD:arena/01a106d2-mod-convertor-proiect && echo "push OK" && break
+            echo "retry push $i"; sleep 10
+          done
+
+      - name: Verificare jar
+        run: |
+          ls -la vehiclemod/plugin/target/VehicleMod.jar
+          unzip -l vehiclemod/plugin/target/VehicleMod.jar | head -20
+
+      - name: Test pe server Paper 1.21.4 real
+        run: |
+          set -o pipefail
+          {
+            set -x
+            mkdir -p server/plugins
+            cd server
+            curl -sL "https://fill.papermc.io/v3/projects/paper/versions/1.21.4/builds/latest/downloads/server:default" -o paper.jar
+            java -jar paper.jar --nogui &
+            echo $! > pid
+            sleep 5
+            cd ..
+            # așteaptă „Done" (max 120s)
+            for i in $(seq 1 60); do
+              grep -q "Done (" server/run.log 2>/dev/null && break
+              grep -q "Done (" server/logs/latest.log 2>/dev/null && break
+              sleep 2
+            done
+            cp vehiclemod/plugin/target/VehicleMod.jar server/plugins/
+            sleep 10
+            # pluginul se încarcă la boot; repornim rapid cu pluginul
+            kill $(cat server/pid) 2>/dev/null || true
+            sleep 5
+            cd server && java -jar paper.jar --nogui > run.log 2>&1 &
+            echo $! > pid
+            cd ..
+            for i in $(seq 1 150); do
+              sleep 2
+              grep -q "Done (" server/run.log 2>/dev/null && break
+            done
+            grep -E "VehicleMod|ERROR" server/run.log | head -20
+            grep -qE "VehicleMod" server/run.log && echo "=== SMOKE TEST OK ===" || { echo "=== SMOKE TEST FAILED ==="; cp server/run.log vehiclemod/release/server-test.log 2>/dev/null || true; exit 1; }
+          } 2>&1 | tee vehiclemod/smoke.txt
+        env:
+          MALLOC_ARENA_MAX: 2
+
+      - name: Comite jar-ul în repo
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          mkdir -p vehiclemod/release
+          cp vehiclemod/plugin/target/VehicleMod.jar vehiclemod/release/VehicleMod.jar
+          git add -f vehiclemod/release/VehicleMod.jar
+          git commit -m "build: VehicleMod.jar (CI) [skip ci]" || echo "nimic"
+          for i in 1 2 3 4; do
+            git pull --rebase -q origin arena/01a106d2-mod-convertor-proiect && git push -q origin HEAD:arena/01a106d2-mod-convertor-proiect && echo publicat && exit 0
+            sleep 8
+          done
+          echo "push eșuat"

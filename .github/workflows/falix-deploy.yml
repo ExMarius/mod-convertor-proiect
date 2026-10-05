@@ -1,0 +1,48 @@
+name: falix-deploy
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/falix-deploy.txt']
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    timeout-minutes: 70
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy pe Falix
+        env:
+          PTERO_TOKEN: ${{ secrets.PTERO_TOKEN }}
+        run: |
+          pip install -q paramiko
+          FALIX_TOKEN=$(openssl enc -d -aes-256-cbc -pbkdf2 -base64 -k "$PTERO_TOKEN" -in deploy/falix_token.enc)
+          set -o pipefail
+          FALIX_TOKEN="$FALIX_TOKEN" python3 deploy/falix_upgrade.py 2>&1 | tee deploy-report/falix-console.txt
+
+      - name: SLP după deploy
+        if: always()
+        run: python3 deploy/slp.py uke.progamer.me:15704 || true
+
+      - name: Publică raportul
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          git add deploy-report/falix-deploy.txt deploy-report/falix-console.txt 2>/dev/null || true
+          git commit -m "falix: raport deploy [skip ci]" || echo "nimic"
+          for i in 1 2 3 4; do
+            if git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null && git push; then
+              echo publicat; exit 0
+            fi
+            git rebase --abort 2>/dev/null || true; sleep 8
+          done
+          git fetch -q origin
+          git reset --soft origin/${GITHUB_REF#refs/heads/}
+          git add deploy-report/falix-deploy.txt
+          git commit -m "falix: raport deploy [skip ci]" || true
+          git push || echo "push eșuat"

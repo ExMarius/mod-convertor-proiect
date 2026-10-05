@@ -1,0 +1,32 @@
+name: uke-test
+
+on:
+  push:
+    branches: ['arena/**']
+    paths: ['deploy/uke-test.txt']
+
+permissions:
+  contents: write
+
+jobs:
+  uke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Probare uke.progamer.me (SLP + RCON)
+        run: |
+          {
+            echo "=== $(date -u) probă uke.progamer.me din CI ==="
+            python3 deploy/uke_probe2.py
+          } 2>&1 | tee deploy-report/uke.txt
+
+      - name: Publică raportul
+        if: always()
+        run: |
+          git config user.name "arena-agent"
+          git config user.email "297053741+arena-agent@users.noreply.github.com"
+          git add deploy-report/uke.txt || true
+          git commit -m "uke: raport [skip ci]" || echo "nimic"
+          git pull --rebase -q origin ${GITHUB_REF#refs/heads/} 2>/dev/null || true
+          git push || echo "push eșuat"

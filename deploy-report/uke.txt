@@ -1,0 +1,16 @@
+=== Mon Oct  5 09:43:09 UTC 2026 probă uke.progamer.me din CI ===
+SLP :15704 OK: §9Sleeping protocol -1
+   motd: {'text': '§eJoin to start server and stay connected!\n', 'extra': [{'text': 'Powered by ', 'color': 'gray', 'extra': [{'text': 'powerupstack
+   players: 0/0
+Traceback (most recent call last):
+  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/uke_probe2.py", line 49, in <module>
+    import paramiko
+ModuleNotFoundError: No module named 'paramiko'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/work/mod-convertor-proiect/mod-convertor-proiect/deploy/uke_probe2.py", line 51, in <module>
+    import os; os.system("pip3 install -q paramiko"); import paramiko
+                                                      ^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'paramiko'

@@ -1,0 +1,613 @@
+comandă necunoscută
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_6aukDFu566sBwMB669DbpjoA5olVMF8SXTZT7Du4","client_id_issued_at":1791142167,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_pd4nbLJ39qFQcCQlyqoSRxfIzs1QI4UHCxNqO0gM","client_id_issued_at":1791150388,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_uQbDVVBNRavRVUy7VoJivcVJrcWdHghSm5wwXKQp","client_id_issued_at":1791150456,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_23RQYwrVBCUgyyxHtsCQmb5Sv8hhTqkwlY8USc9d","client_id_issued_at":1791150703,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_TmuO7qfoVvwobTnffyfA9KD2KrddPqdikHPYu66N","client_id_issued_at":1791150768,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_GuIZCMbiVXCk5ro06HENAEoprOUN6ElWQXgnG6Ww","client_id_issued_at":1791150844,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_uGBwU305qk4Y9t7uzYVCJdKzfDfpKiQwVIg8N58k","client_id_issued_at":1791150909,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_tnim8vcvZUicYX26oJxyvQPBq6zyriBbXNfBRsnY","client_id_issued_at":1791151235,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_tTAGvpw4jwNqSoCKYjGN8XbCuXjWlaBbIloZwBxT","client_id_issued_at":1791151320,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_rqXXeEKPfXD921HsByHe6niWlF4EWXzxSRDRIOuf","client_id_issued_at":1791151407,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_BLL31hZiZqaKbNC45uaad4Rkil2Ef34W3z8sNSpi","client_id_issued_at":1791151535,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_a7hrDAfAQ0EMHYHt6AQm5jx7fitLepBmHjSypgms","client_id_issued_at":1791151967,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_4M9XX5xOk33a7XSDRIx9VGbup0LTSDj6xmMj3kp1","client_id_issued_at":1791152176,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_bmHyGFNFGwZIsS9un58b2oDzYoh86DqmETAJLFxZ","client_id_issued_at":1791152278,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_sy4G7r4TEqGeZYX1OtWqICLLBMmvqU4upFHyRz47","client_id_issued_at":1791152752,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_DUhceEl8rOSNzn5nqIlCxyoR1MAAM8bzNOtfJogW","client_id_issued_at":1791152901,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_hCybFyRawmMzOyXEJzVyU9G7iyfyKgEKNNx4wKKw","client_id_issued_at":1791153041,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_mVuYcknERFpdT8jJ1wqWkSNR0XOSi6XpXjoARAbS","client_id_issued_at":1791153498,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_NAXaFyMdzsHUtUxwGNBUg1Og0dbfaql5kNaeNcDG","client_id_issued_at":1791154390,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_5kYr1az2ivz1zbYqMF4aD1r4HuchJtzn3tPAALj8","client_id_issued_at":1791154808,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_mbucWWiLy9FhOqxBHKhB6wsf7stB1TBqoee77zVz","client_id_issued_at":1791154905,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_rc6NcY4OTCfumGirJvPsvFKCcDYqyBfX0IZsNkUf","client_id_issued_at":1791155015,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_dUfBnBbtVdMNWFmcpsdrQr33OW0tHlQQUKwxsBkE","client_id_issued_at":1791155399,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_fDtACRfH3QJ8eFabxRa8JVDoc66qgffg5UtP5782","client_id_issued_at":1791155490,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_rmtJulxMkIAjEkVp2lRiaheMouETV6qsScvKW8Lm","client_id_issued_at":1791160492,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_TVF4AOtVlyKYRrUU8kL1nlDaMxxfg2crypIXzbCQ","client_id_issued_at":1791161237,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_a4IZsnP2lawsjRRnE5k0LCRfORAazXznjnU0eUxs","client_id_issued_at":1791163268,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_nw0Gf8NFcLGTKYN3H2LqssAxGldJMrEaCozzOVR2","client_id_issued_at":1791194226,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_vEsvfah7r8ZEnJxB39XRJQijz3upehS5VRmpmjS5","client_id_issued_at":1791194328,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_Wpn6VuSPNw2ub8VuLQHf91fhWM57VJxvgyq9hhit","client_id_issued_at":1791208670,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_R5Vk0QUVpAr7gAJIsNkxslNTA8ULIYgK1saeulUs","client_id_issued_at":1791213644,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_lzYpkZhFF4aQVWALNmQinpiJbsHnKjpy4ZIK16ZD","client_id_issued_at":1791214796,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_Fze2jPq6BbCwL2T77sdHtUZlAmsYddDA4SBwfiJQ","client_id_issued_at":1791222130,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.
+GET /.well-known/oauth-authorization-server → 404: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
+GET /.well-known/oauth-protected-resource → 200: {"resource":"https://mcp.ouipanel.com/mcp","authorization_servers":["https://ouipanel.com"],"bearer_methods_supported":["header"],"scopes_supported":["server:read","files:read","backups:read","databases:read"],"resource_
+GET https://ouipanel.com/.well-known/... → 200: {"issuer":"https://ouipanel.com","authorization_endpoint":"https://ouipanel.com/oauth/ia/authorize","token_endpoint":"https://ouipanel.com/oauth/ia/token","response_types_supported":["code"],"response_modes_supported":["
+authorize: https://ouipanel.com/oauth/ia/authorize
+token:     https://ouipanel.com/oauth/ia/token
+register:  https://ouipanel.com/oauth/ia/register
+POST register → 201: {"client_id":"dcr_L8p08um5Iq0YTYbK6yGb2yIVw5jJVSIievGhkEFh","client_id_issued_at":1791223405,"redirect_uris":["http://localhost:8931/callback"],"grant_types":["authorization_code","refresh_token"],"response_types":["code"],"token_endpoint_auth_method":"none","client_name":"arena-agent (ExMarius)"}
+LINK DE APROBARE GENERAT → deploy-report/authorize-url.txt
+Pasul următor (user): deschide linkul, alege serverul + permisiunile, aprobă,
+apoi copiază URL-ul complet din bara browserului (începe cu http://localhost:8931/...)
+și lipește-l în chat.

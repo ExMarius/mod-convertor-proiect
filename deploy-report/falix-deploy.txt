@@ -1,0 +1,112 @@
+
+=== 22:00:37 DEPLOY FALIX ===
+cont: exmarius (id 70565004)
+scopes cheie: ['dns:read', 'dns:domains:write', 'dns:domains:delete', 'dns:records:write', 'dns:dnssec:write', 'dns:analytics:read', '*', 'servers:*', 'servers:read', 'servers:command', 'servers:console', 'servers:power', 'servers:reinstall', 'servers:delete', 'servers:create', 'applications:read', 'templates:read', 'templates:write', 'servers:webhooks:read', 'servers:webhooks:write', 'servers:activity:read', 'servers:network:read', 'servers:network:write', 'servers:databases:read', 'servers:databases:write', 'servers:files:read', 'servers:files:write', 'servers:backups:read', 'servers:backups:write', 'servers:backups:restore', 'servers:properties:read', 'servers:properties:write', 'servers:settings:read', 'servers:settings:write', 'servers:startup:read', 'servers:startup:write', 'servers:proxies:read', 'servers:proxies:write', 'servers:schedules:read', 'servers:schedules:write', 'servers:domains:read', 'servers:domains:write', 'servers:sftp:read', 'servers:subdomains:read', 'servers:subdomains:write', 'servers:worlds:read', 'servers:worlds:write', 'servers:players:read', 'servers:players:write', 'servers:addons:read', 'servers:addons:write', 'servers:subusers:read', 'servers:subusers:write', 'servers:git:read', 'servers:git:write', 'servers:git:deploy', 'servers:connections:read', 'servers:connections:call', 'servers:init:deploy', 'servers:firewall:read', 'servers:firewall:write', 'servers:monitor:read', 'servers:logs:read', 'servers:logs:write', 'servers:modules:read', 'servers:modules:write', 'servers:importer:write', 'servers:instances:read', 'servers:instances:write', 'servers:instances:delete', 'servers:advertisement:read', 'servers:advertisement:write', 'servers:support-access:read', 'servers:support-access:write', 'account:tickets:read', 'account:tickets:write', 'utility:mcquery', 'account:ssh-keys:read', 'account:ssh-keys:write', 'account:integrations:read', 'account:billing:read', 'account:billing:write']
+servere: 0
+nu știu ce server să aleg — opresc
+
+=== 22:05:18 CREARE + DEPLOY FALIX ===
+creez server gratuit nou...
+POST /servers → 202: {"data": {"object": "server_creation", "job_id": "727f2f2e-baec-4f4a-b26f-9ae2914e2733", "status": "provisioning", "application": "minecraft-java", "plan": "free", "name": "Offroader-Test", "subdomain": "offroader-arena.falixsrv.me", "created_at": "2026-10-04T22:05:19Z", "updated_at": "2026-10-04T22:05:19Z"}}
+job creare: 727f2f2e-baec-4f4a-b26f-9ae2914e2733 — poll...
+  job 0: {"object": "server_creation", "job_id": "727f2f2e-baec-4f4a-b26f-9ae2914e2733", "status": "ready", "server": {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8"}, "appli
+server creat: id=3500167
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+stare server: None
+GET server → 0: {"error": {"code": "network", "message": "The read operation timed out"}}
+GET server → 503: {"error": {"code": "service_unavailable", "message": "API key service is unavailable.", "doc_url": "https://client.falixnodes.net/profile/apidocs#/overview/error-codes"}, "request_id": "986974fc-9619-
+server: {}
+GET startup → 503
+GET settings/applications → 503
+root: []
+lumea: world
+upload plugins/OffroaderPlugin.jar (5896 bytes)...
+  raw → 503: {"error": {"code": "service_unavailable", "message": "API key service is unavailable.", "doc_url": "https://client.falixnodes.net/profile/apidocs#/overview/error-codes"}, "request_id": "fa036ecb-4263-4ff9-a59d-cfeb955cc0a3"}
+  base64 → 503: {"error": {"code": "service_unavailable", "message": "API key service is unavailable.", "doc_url": "https://client.falixnodes.net/profile/apidocs#/overview/error-codes"}, "request_id": "4fde0b00-679a-47ac-8c0a-3676f97da089"}
+
+=== 22:12:45 CREARE + DEPLOY FALIX ===
+  [503] retry în 15s (/servers?limit=100)
+  [503] retry în 30s (/servers?limit=100)
+  [503] retry în 45s (/servers?limit=100)
+server existent: Offroader-Test (id=3500167, status=None)
+obiect server complet: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+server: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+startup: {"object": "server_startup", "server_id": 3500167, "startup_command": "java -Xms128M -Xmx$(({{SERVER_MEMORY}}-512))M -Dpaper.playerconnection.keepalive=60 -Dfile.encoding=UTF-8 -Dterminal.jline=false -Dterminal.ansi=true {{JAVAPARAM}} $( [[  ! -f unix_args.txt ]] && printf %s \"-jar server.jar\" || printf %s \"@unix_args.txt\" ) {{MCPARAM}}", "docker_image": "ghcr.io/falixnodes-software/dockerimages:java_21", "available_docker_images": {"Java 16": "ghcr.io/falixnodes-software/dockerimages:java_16", "Java 11": "ghcr.io/falixnodes-software/dockerimages:java_11", "Java 17": "ghcr.io/falixnodes-software/dockerimages:java_17", "Java 21": "ghcr.io/falixnodes-software/dockerimages:java_21", "Java 8": "ghcr.io/falixnodes-software/dockerimages:java_8"}, "egg_id": 23137, "egg_startup": "java -Xms128
+aplicații comutabile (primele 10):
+  {"object": "application_catalog", "server_id": 3500167, "games": [{"id": 23137, "name": "Minecraft Java/Bedrock", "icon": "cube", "is_current": true}, {"id": 23188, "name": "Hytale", "icon": "cube", "is_current": false}, {"id": 23121, "name
+root: ['server.properties']
+lumea: world
+upload plugins/OffroaderPlugin.jar (5896 bytes)...
+  raw → 400: {"error": {"code": "bad_request", "message": "Expected an `application/json` request body.", "doc_url": "https://client.falixnodes.net/profile/apidocs#/overview/error-codes"}, "request_id": "9724b2c0-887a-49ed-a705-54e8c790ff23"}
+  OK (base64)
+
+=== 22:16:19 CREARE + DEPLOY FALIX ===
+server existent: Offroader-Test (id=3500167, status=None)
+obiect server complet: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+server: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+startup: {"object": "server_startup", "server_id": 3500167, "startup_command": "java -Xms128M -Xmx$(({{SERVER_MEMORY}}-512))M -Dpaper.playerconnection.keepalive=60 -Dfile.encoding=UTF-8 -Dterminal.jline=false -Dterminal.ansi=true {{JAVAPARAM}} $( [[  ! -f unix_args.txt ]] && printf %s \"-jar server.jar\" || printf %s \"@unix_args.txt\" ) {{MCPARAM}}", "docker_image": "ghcr.io/falixnodes-software/dockerimages:java_21", "available_docker_images": {"Java 17": "ghcr.io/falixnodes-software/dockerimages:java_17", "Java 11": "ghcr.io/falixnodes-software/dockerimages:java_11", "Java 21": "ghcr.io/falixnodes-software/dockerimages:java_21", "Java 16": "ghcr.io/falixnodes-software/dockerimages:java_16", "Java 8": "ghcr.io/falixnodes-software/dockerimages:java_8"}, "egg_id": 23137, "egg_startup": "java -Xms128
+aplicații comutabile (primele 10):
+  {"object": "application_catalog", "server_id": 3500167, "games": [{"id": 23137, "name": "Minecraft Java/Bedrock", "icon": "cube", "is_current": true}, {"id": 23188, "name": "Hytale", "icon": "cube", "is_current": false}, {"id": 23121, "name
+root: ['plugins', 'server.properties']
+lumea: world
+mkdir plugins → 400: {"error": {"code": "bad_request", "message": "Invalid request body: missing field `name`", "doc_url": "https://client.falixnodes.net/profile/apidocs#/
+mkdir world/datapacks → 400: {"error": {"code": "bad_request", "message": "Invalid request body: missing field `name`", "doc_url": "https://client.falixnodes.net/profile/apidocs#/
+upload plugins/OffroaderPlugin.jar (5896 bytes)...
+  OK (base64)
+
+=== 22:17:59 CREARE + DEPLOY FALIX ===
+server existent: Offroader-Test (id=3500167, status=None)
+obiect server complet: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+server: {"object": "server", "id": 3500167, "uuid": "794890bb-836e-435f-9b9b-0fdd735c28d8", "short_uuid": "794890bb", "name": "Offroader-Test", "limits": {"memory_mib": 2048, "disk_mib": 10000, "cpu_percent": 100, "backups": 1, "allocations": 4, "databases": 0}, "allocation": {"ip": "162.55.100.208", "port": 42345, "hostname": ""}, "software": {}}
+startup: {"object": "server_startup", "server_id": 3500167, "startup_command": "java -Xms128M -Xmx$(({{SERVER_MEMORY}}-512))M -Dpaper.playerconnection.keepalive=60 -Dfile.encoding=UTF-8 -Dterminal.jline=false -Dterminal.ansi=true {{JAVAPARAM}} $( [[  ! -f unix_args.txt ]] && printf %s \"-jar server.jar\" || printf %s \"@unix_args.txt\" ) {{MCPARAM}}", "docker_image": "ghcr.io/falixnodes-software/dockerimages:java_21", "available_docker_images": {"Java 11": "ghcr.io/falixnodes-software/dockerimages:java_11", "Java 21": "ghcr.io/falixnodes-software/dockerimages:java_21", "Java 17": "ghcr.io/falixnodes-software/dockerimages:java_17", "Java 8": "ghcr.io/falixnodes-software/dockerimages:java_8", "Java 16": "ghcr.io/falixnodes-software/dockerimages:java_16"}, "egg_id": 23137, "egg_startup": "java -Xms128
+aplicații comutabile (primele 10):
+  {"object": "application_catalog", "server_id": 3500167, "games": [{"id": 23137, "name": "Minecraft Java/Bedrock", "icon": "cube", "is_current": true}, {"id": 23188, "name": "Hytale", "icon": "cube", "is_current": false}, {"id": 23121, "name
+root: ['plugins', 'server.properties']
+lumea: world
+mkdir plugins → 400: {"error": {"code": "bad_request", "message": "Invalid request body: root: unknown field `root`, expected `path` or `name`", "doc_url": "https://client
+mkdir world/datapacks → 400: {"error": {"code": "bad_request", "message": "Invalid request body: root: unknown field `root`, expected `path` or `name`", "doc_url": "https://client
+upload plugins/OffroaderPlugin.jar (5896 bytes)...
+  OK (base64)
+upload world/datapacks/OffroaderDatapack.zip (32902 bytes)...
+  OK (base64)
+properties → 200: {"data": [{"object": "server_property", "key": "entity-broadcast-range-percentage", "value": "100"}, {"object": "server_property", "key": "max-tick-time", "value": "60000"}, {"object": "server_propert
+power start → 403: {"error": {"code": "verification_required", "message": "Starting a free-plan server requires a quick verification. Open the link in `error.action_url`, complete it, then retry within 5 minutes.", "doc_url": "https://client.falixnodes.net/profile/apidocs#/overview/error-codes", "action_url": "https://falixnodes.net/s/2z2s4pvbsx3lz"}, "request_id": "bc2f9420-c00d-40b2-84e8-8961e348c6cd"}
+!! VERIFICARE NECESARĂ (o dată, în browser): deschide linkul ăsta:
+!! https://falixnodes.net/s/2z2s4pvbsx3lz
+!! apoi îmi zici și repornesc deploy-ul (serverul e deja creat)

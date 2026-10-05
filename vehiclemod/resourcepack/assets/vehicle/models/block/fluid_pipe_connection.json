@@ -1,0 +1,83 @@
+{
+    "__comment": "Model generated using MrCrayfish's Model Creator (https://mrcrayfish.com/tools?id=mc)",
+    "textures": {
+        "iron_block": "minecraft:block/iron_block"
+    },
+    "elements": [
+        {
+            "from": [ 6.5, 5.5, 0 ], 
+            "to": [ 9.5, 6.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 15, 4, 16 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 12, 9, 15 ], "rotation": 270 }
+            }
+        },
+        {
+            "from": [ 9.5, 6.5, 0 ], 
+            "to": [ 10.5, 9.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 13, 1, 16 ] },
+                "east": { "texture": "#iron_block", "uv": [ 1, 1, 6, 4 ] }
+            }
+        },
+        {
+            "from": [ 5.5, 6.5, 0 ], 
+            "to": [ 6.5, 9.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 13, 1, 16 ] },
+                "west": { "texture": "#iron_block", "uv": [ 1, 1, 6, 4 ] }
+            }
+        },
+        {
+            "from": [ 6.5, 9.5, 0 ], 
+            "to": [ 9.5, 10.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 15, 4, 16 ] },
+                "up": { "texture": "#iron_block", "uv": [ 6, 12, 9, 15 ], "rotation": 270 }
+            }
+        },
+        {
+            "from": [ 5.5, 9.5, 0 ], 
+            "to": [ 6.5, 10.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 0, 1, 1 ] },
+                "west": { "texture": "#iron_block", "uv": [ 0, 0, 5, 1 ] },
+                "up": { "texture": "#iron_block", "uv": [ 0, 0, 1, 5 ] }
+            }
+        },
+        {
+            "from": [ 9.5, 9.5, 0 ], 
+            "to": [ 10.5, 10.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 0, 1, 1 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 0, 5, 1 ] },
+                "up": { "texture": "#iron_block", "uv": [ 0, 5, 1, 10 ] }
+            }
+        },
+        {
+            "from": [ 9.5, 5.5, 0 ], 
+            "to": [ 10.5, 6.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 0, 1, 1 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 0, 5, 1 ] },
+                "down": { "texture": "#iron_block", "uv": [ 0, 0, 1, 5 ] }
+            }
+        },
+        {
+            "from": [ 5.5, 5.5, 0 ], 
+            "to": [ 6.5, 6.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 0, 0, 1, 1 ] },
+                "west": { "texture": "#iron_block", "uv": [ 0, 0, 5, 1 ] },
+                "down": { "texture": "#iron_block", "uv": [ 0, 0, 1, 5 ] }
+            }
+        },
+        {
+            "from": [ 6.5, 6.5, 0 ], 
+            "to": [ 9.5, 9.5, 5 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 1, 4, 4 ] }
+            }
+        }
+    ]
+}

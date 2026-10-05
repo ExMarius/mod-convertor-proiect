@@ -1,0 +1,27 @@
+
+=== 18:48:10 DISCOVERY (mod discover) ===
+GET /api/client → 403
+EROARE: nu pot lista serverele (cod 403).
+<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-boHHKRVPmdcYXcUhlrMQAs&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-s
+=== 18:50:18 DISCOVERY (mod discover) ===
+GET /api/client → 403
+EROARE: nu pot lista serverele (cod 403).
+<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-LsRlHTx4ZIP6HQgirCkede&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-s
+=== 18:57:51 DISCOVERY (mod discover) ===
+Cloudflare challenge (încercarea 1) — mai încearcă peste 15s...
+Cloudflare challenge (încercarea 2) — mai încearcă peste 15s...
+Cloudflare challenge (încercarea 3) — mai încearcă peste 15s...
+GET /api/client → 403
+EROARE: nu pot lista serverele (cod 403).
+CAUZA: panelul e în spatele Cloudflare cu provocare JS — API-ul HTTP nu e accesibil automat.
+SOLUȚIE: SFTP (panel → Settings → SFTP): host, port, username, parolă.
+<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-NkyKAwUB1Xkt2FdOBBBVAg&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-s
+=== 19:25:06 DISCOVERY (mod discover) ===
+Cloudflare challenge (încercarea 1) — mai încearcă peste 15s...
+Cloudflare challenge (încercarea 2) — mai încearcă peste 15s...
+Cloudflare challenge (încercarea 3) — mai încearcă peste 15s...
+GET /api/client → 403
+EROARE: nu pot lista serverele (cod 403).
+CAUZA: panelul e în spatele Cloudflare cu provocare JS — API-ul HTTP nu e accesibil automat.
+SOLUȚIE: SFTP (panel → Settings → SFTP): host, port, username, parolă.
+<!DOCTYPE html><html lang="en-US"><head><title>Just a moment...</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="content-security-policy" content="default-src &#39;none&#39;; script-src &#39;nonce-ycvmgy47Rjc38bzwOcKQFi&#39; &#39;unsafe-eval&#39; https://challenges.cloudflare.com; script-s

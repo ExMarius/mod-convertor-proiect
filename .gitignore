@@ -1,0 +1,5 @@
+# zip-urile modului + extragerile (regenerabile din branch-ul main)
+sources/
+# output
+offroader/release/
+__pycache__/
